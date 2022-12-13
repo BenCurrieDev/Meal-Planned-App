@@ -1,6 +1,5 @@
 const ROUTES = {
-    getStartedRoute: () => '/',
-    calendarRoute: () => '/calendar',
+    homeRoute: () => '/',
     recipesRoute: () => '/recipes',
     plannerRoute: () => '/planner'
 }

@@ -2,9 +2,10 @@ import { NavLink } from "react-router-dom";
 
 import ROUTES from "../app/routes";
 
-let isMealPlan = false;  // replace with a state variable
 
 
+let isMealPlan = true;  // replace with a state variable
+let currentDayView = 'Today';  // replace with a state variable
 
 const NavBarTop = () => {
     return (
@@ -12,8 +13,8 @@ const NavBarTop = () => {
             <p>Replace this pTag with logo</p>
             <ul>
               <li>
-                <NavLink to={isMealPlan ? ROUTES.calendarRoute() : ROUTES.getStartedRoute()} activeClassName="active">
-                    {isMealPlan ? 'Today' : 'Get Started' }
+                <NavLink to={ROUTES.homeRoute()} activeClassName="active">
+                    {isMealPlan ? currentDayView : 'Get Started' }
                 </NavLink>
               </li>
               <li>

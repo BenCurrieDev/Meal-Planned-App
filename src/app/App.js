@@ -9,7 +9,9 @@ import NavBarTop from '../components/navBarTop';
 import Banner from '../components/Banner';
 import GetStarted from '../pages/getStarted';
 import Recipes from '../pages/recipes';
+import Calendar from '../pages/calendar';
 
+let isMealPlan = true;  // replace with a state variable
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<GetStarted />} />
+            <Route path="/" element={isMealPlan ? <Calendar /> : <GetStarted />} />
             <Route path="/recipes" element={<Recipes/>} />
           </Routes>
         </main>
