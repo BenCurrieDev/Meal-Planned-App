@@ -4,7 +4,7 @@ import ROUTES from "../app/routes";
 
 
 
-let isMealPlan = true;  // replace with a state variable
+let isMealPlan = false;  // replace with a state variable
 let currentDayView = 'Today';  // replace with a state variable
 
 const NavBarTop = () => {
