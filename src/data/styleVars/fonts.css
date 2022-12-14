@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+    --ff-primary: 'Playfair Display', sans-serif;
+    --ff-secondary: 'Open Sans', serif;
+
+    --fs-h1: 10rem;
+    --fs-h2: 6rem;
+    --fs-h3: 4rem;
+    --fs-h4: 3rem;
+    --fs-p: 2rem;
+
+    --fw-h1: 700;
+}

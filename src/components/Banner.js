@@ -1,9 +1,9 @@
-
+import H1 from "./styled/headings/H1.style";
 
 const Banner = () => {
   return (
     <div>
-      <h1>Welcome to Meal Planned</h1>
+      <H1>Mealsy</H1>
     </div>
   )
 }
