@@ -14,9 +14,7 @@ import Calendar from '../pages/calendar';
 import Planner from '../pages/planner';
 
 import GlobalStyle from '../GlobalStyles.style';
-import AppContainer from './AppContainer.style';
-import PageContainer from '../pages/PageContainer.style';
-import NavBarTopContainer from '../components/NavBarTop/NavBarTopContainer.style';
+import * as S from './styles';
 
 
 let isMealPlan = false;  // replace with a state variable
@@ -25,17 +23,17 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
-      <AppContainer >
+      <S.AppContainer >
         <NavBarTop />
-        <PageContainer>
+        <S.PageContainer>
           <Banner />
           <Routes>
             <Route path={ROUTES.homeRoute()} element={isMealPlan ? <Calendar /> : <GetStarted />} />
             <Route path={ROUTES.recipesRoute()} element={<Recipes />} />
             <Route path={ROUTES.plannerRoute()} element={<Planner />} />
           </Routes>
-        </PageContainer>
-      </AppContainer>
+        </S.PageContainer>
+      </S.AppContainer>
     </Router>
   );
 }
