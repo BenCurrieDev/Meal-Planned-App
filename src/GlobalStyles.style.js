@@ -1,5 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
+/*
+
+RESET
+
+*/
+
 const GlobalStyle = createGlobalStyle`
   /* Box sizing rules */
 *,
@@ -76,5 +82,6 @@ select {
   }
 }
 `
+
 
 export default GlobalStyle;
