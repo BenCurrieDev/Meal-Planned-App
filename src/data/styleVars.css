@@ -1,6 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
+    /*
+
+    COLORS
+
+    */
+
+    --clr-bg: #F8F6DD;
+    --clr-ntrl-dk: #131c1e;
+    --clr-ntrl: #344C53;
+    --clr-ntrl-lt: #79A375;
+    --clr-primary: #D3F84E;
+    --clr-secondary: #D7FDB4;
+    
+    /* 
+    
+    FONTS
+
+    */
+
     --ff-primary: 'Playfair Display', sans-serif;
     --ff-secondary: 'Open Sans', serif;
 
@@ -11,4 +30,13 @@
     --fs-p: 2rem;
 
     --fw-h1: 700;
+
+    /*
+
+    SPACING
+
+    */
+
+    --navBarTopHeight: 4em;
+    --content-width: min(90%, 1600px);
 }

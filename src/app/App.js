@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import ROUTES from './routes';
-import NavBarTop from '../components/navBarTop';
+import NavBarTop from '../components/NavBarTop/NavBarTop';
 import Banner from '../components/Banner';
 import GetStarted from '../pages/getStarted';
 import Recipes from '../pages/recipes';
@@ -16,6 +16,7 @@ import Planner from '../pages/planner';
 import GlobalStyle from '../GlobalStyles.style';
 import AppContainer from './AppContainer.style';
 import PageContainer from '../pages/PageContainer.style';
+import NavBarTopContainer from '../components/NavBarTop/NavBarTopContainer.style';
 
 
 let isMealPlan = false;  // replace with a state variable
