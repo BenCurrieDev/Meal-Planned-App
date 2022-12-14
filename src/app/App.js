@@ -13,25 +13,28 @@ import Recipes from '../pages/recipes';
 import Calendar from '../pages/calendar';
 import Planner from '../pages/planner';
 
+import GlobalStyle from '../GlobalStyles.style';
+import AppContainer from './AppContainer.style';
+import PageContainer from '../pages/PageContainer.style';
+
 
 let isMealPlan = false;  // replace with a state variable
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <NavBarTop />
+      <GlobalStyle />
+      <AppContainer >
+        <NavBarTop />
+        <PageContainer>
           <Banner />
-        </header>
-        <main>
           <Routes>
             <Route path={ROUTES.homeRoute()} element={isMealPlan ? <Calendar /> : <GetStarted />} />
             <Route path={ROUTES.recipesRoute()} element={<Recipes />} />
             <Route path={ROUTES.plannerRoute()} element={<Planner />} />
           </Routes>
-        </main>
-      </div>
+        </PageContainer>
+      </AppContainer>
     </Router>
   );
 }
