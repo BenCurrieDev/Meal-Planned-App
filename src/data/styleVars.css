@@ -7,12 +7,11 @@
 
     */
 
-    --clr-bg: #F8F6DD;
-    --clr-ntrl-dk: #131c1e;
-    --clr-ntrl: #344C53;
-    --clr-ntrl-lt: #79A375;
+    --clr-ntrl-dk: #2B0625;
+    --clr-ntrl: #877484;
+    --clr-ntrl-lt: #FFF7FD;
     --clr-primary: #D3F84E;
-    --clr-secondary: #D7FDB4;
+    --clr-secondary: #B80099;
     
     /* 
     
@@ -37,6 +36,6 @@
 
     */
 
-    --navBarTopHeight: 4em;
+    --navBarTop-height: 4em;
     --content-width: min(90%, 1600px);
 }
