@@ -25,6 +25,8 @@
     --sp10: calc(var(--sp-root)*10);
 
     --navBarTop-height: var(--sp3);
+    --banner-height: calc(var(--sp10) * 2);
+    --header-height: calc(var(--navBarTop-height) + var(--banner-height));
     
 
     /*
@@ -33,11 +35,13 @@
 
     */
 
-    --clr-blk: #0D0F05;
-    --clr-ntrl-dk: #414535;
-    --clr-ntrl-lt: #FDFFF7;
-    --clr-highlight-lt: #D3F84E;
-    --clr-highlight-dk: #046637;
+    --clr-blk: black;
+    --clr-wht: white;
+    --clr-ntrl-dk: #56635C;
+    --clr-ntrl-lt: #F2FFF8;
+    --clr-highlight-lt: #3BFF93;
+    --clr-highlight-dk: #00873D;
+    --clr-secondary: #AB005B;
     
     /* 
     

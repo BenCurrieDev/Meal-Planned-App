@@ -7,7 +7,7 @@ import {
 
 import ROUTES from './routes';
 import NavBarTop from '../components/NavBarTop/NavBarTop';
-import Banner from '../components/Banner';
+import Banner from '../components/Banner/Banner';
 import GetStarted from '../pages/getStarted';
 import Recipes from '../pages/recipes';
 import Calendar from '../pages/calendar';
@@ -26,8 +26,8 @@ function App() {
       <GlobalStyle />
       <S.AppContainer >
         <NavBarTop />
+        <Banner />
         <S.PageContainer>
-          <Banner />
           <Routes>
             <Route path={ROUTES.homeRoute()} element={isMealPlan ? <Calendar /> : <GetStarted />} />
             <Route path={ROUTES.recipesRoute()} element={<Recipes />} />

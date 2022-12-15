@@ -12,18 +12,20 @@ export const NavBarTop = styled.nav`
   justify-content: space-between;
   align-items: center;
   z-index: 3;
-  background-color: var(--clr-ntrl-dk);
+  background-color: var(--clr-highlight-dk);
   
 `
 
 export const Logo = styled.div`
-  background-image: url('logoFull.png');
+  background-image: url('LogoIcon-White-303x306.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  height: var(--navBarTop-height);
-  width: calc(var(--navBarTop-height)*1.7);
+  height: calc(var(--navBarTop-height)*0.7);
+  width: calc(var(--navBarTop-height)*0.7);
   margin-left: var(--sp1);
+
+
 `
 
 export const NavList = styled.ul`

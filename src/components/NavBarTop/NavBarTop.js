@@ -1,6 +1,6 @@
 import ROUTES from "../../app/routes";
 
-import * as S from './styles'
+import * as S from './styles';
 
 
 
