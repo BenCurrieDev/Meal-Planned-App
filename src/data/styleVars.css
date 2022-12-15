@@ -3,15 +3,41 @@
 :root {
     /*
 
+    BASE SIZE CONTROLS
+
+    */
+
+    --s-root: 1rem;
+    --fs-root: calc(var(--s-root)*1.5);
+    --sp-root: calc(var(--s-root)*2);
+    --content-width: min(90%, 1600px);
+
+    /*
+
+    SPACING
+
+    */
+    
+    --sp1: calc(var(--sp-root));
+    --sp2: calc(var(--sp-root)*2);
+    --sp3: calc(var(--sp-root)*3);
+    --sp5: calc(var(--sp-root)*5);
+    --sp10: calc(var(--sp-root)*10);
+
+    --navBarTop-height: var(--sp2);
+    
+
+    /*
+
     COLORS
 
     */
 
-    --clr-ntrl-dk: #2B0625;
-    --clr-ntrl: #877484;
-    --clr-ntrl-lt: #FFF7FD;
-    --clr-primary: #D3F84E;
-    --clr-secondary: #B80099;
+    --clr-blk: #0D0F05;
+    --clr-ntrl-dk: #414535;
+    --clr-ntrl-lt: #FDFFF7;
+    --clr-highlight-lt: #D3F84E;
+    --clr-highlight-dk: #046637;
     
     /* 
     
@@ -22,20 +48,12 @@
     --ff-primary: 'Playfair Display', sans-serif;
     --ff-secondary: 'Open Sans', serif;
 
-    --fs-h1: 10rem;
-    --fs-h2: 6rem;
-    --fs-h3: 4rem;
-    --fs-h4: 3rem;
-    --fs-p: 2rem;
+    --fs-h1: calc(var(--fs-root)*6);
+    --fs-h2: calc(var(--fs-root)*4);
+    --fs-h3: calc(var(--fs-root)*2.5);
+    --fs-h4: calc(var(--fs-root)*1.8);
+    --fs-p: calc(var(--fs-root)*1);
 
     --fw-h1: 700;
 
-    /*
-
-    SPACING
-
-    */
-
-    --navBarTop-height: 4em;
-    --content-width: min(90%, 1600px);
 }
