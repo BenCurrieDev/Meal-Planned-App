@@ -38,20 +38,20 @@ export const NavList = styled.ul`
 `
 
 export const StyledNavLink = styled(NavLink)`
-  color: var(--clr-ntrl-lt);
+  color: var(--clr-wht);
   text-decoration: none;
   font-family: var(--ff-secondary);
-  font-weight: var(--fw-s1);
+  font-weight: var(--fw-s2);
   font-size: var(--fs-link);
   transition: color 1s;
   
   &:hover {
-    color: var(--clr-highlight-lt);
+    color: var(--clr-);
   }
 
 
   &.active {
-    color: var(--clr-highlight-lt);
+    color: var(--clr-ntrl-dk);
   }
 `
 
