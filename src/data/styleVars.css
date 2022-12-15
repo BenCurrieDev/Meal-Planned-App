@@ -8,8 +8,8 @@
     */
 
     --s-root: 1rem;
-    --fs-root: calc(var(--s-root)*1.5);
-    --sp-root: calc(var(--s-root)*2);
+    --fs-root: calc(var(--s-root)*1);
+    --sp-root: calc(var(--s-root)*1.1);
     --content-width: min(90%, 1600px);
 
     /*
@@ -24,7 +24,7 @@
     --sp5: calc(var(--sp-root)*5);
     --sp10: calc(var(--sp-root)*10);
 
-    --navBarTop-height: var(--sp2);
+    --navBarTop-height: var(--sp3);
     
 
     /*
@@ -48,12 +48,25 @@
     --ff-primary: 'Playfair Display', sans-serif;
     --ff-secondary: 'Open Sans', serif;
 
+    --fw-p1: 400;
+    --fw-p2: 500;
+    --fw-p3: 600;
+    --fw-p4: 700;
+    --fw-p5: 800;
+
+    --fw-s1: 300;
+    --fw-s2: 400;
+    --fw-s3: 500;
+    --fw-s4: 600;
+    --fw-s5: 700;
+    --fw-s6: 800;
+
     --fs-h1: calc(var(--fs-root)*6);
     --fs-h2: calc(var(--fs-root)*4);
     --fs-h3: calc(var(--fs-root)*2.5);
     --fs-h4: calc(var(--fs-root)*1.8);
     --fs-p: calc(var(--fs-root)*1);
+    --fs-link: calc(var(--fs-root)*1.1);
 
-    --fw-h1: 700;
 
 }

@@ -12,24 +12,24 @@ let currentDayView = 'Today';  // replace with a state variable
 const NavBarTop = () => {
   return (
     <S.NavBarTop>
-      <p>Replace this pTag with logo</p>
-      <ul>
+      <S.Logo />
+      <S.NavList>
         <li>
-          <NavLink to={ROUTES.homeRoute()} activeClassName="active">
+          <S.StyledNavLink to={ROUTES.homeRoute()} activeClassName="active">
             {isMealPlan ? currentDayView : 'Get Started'}
-          </NavLink>
+          </S.StyledNavLink>
         </li>
         <li>
-          <NavLink to={ROUTES.recipesRoute()} activeClassName="active">
+          <S.StyledNavLink to={ROUTES.recipesRoute()} activeClassName="active">
             Recipes
-          </NavLink>
+          </S.StyledNavLink>
         </li>
         <li>
-          <NavLink to={ROUTES.plannerRoute()} activeClassName="active">
+          <S.StyledNavLink to={ROUTES.plannerRoute()} activeClassName="active">
             Planner
-          </NavLink>
+          </S.StyledNavLink>
         </li>
-      </ul>
+      </S.NavList>
     </S.NavBarTop>
   )
 }

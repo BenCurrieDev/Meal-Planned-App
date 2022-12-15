@@ -4,12 +4,14 @@ import '../data/styleVars.css';
 
 export const AppContainer = styled.div`
   width: 100vw;
-  background-color: var(--clr-bg);
+  min-height: 100vh;
+  background-color: var(--clr-ntrl-lt);
 `
 
 export const PageContainer = styled.div`
-  width: min(90%, 1600px);
-  border: 2px solid red;
+  width: var(--content-width);
   margin: 0 auto;
+  position: relative;
+  top: var(--navBarTop-height)
 `
 

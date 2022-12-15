@@ -21,6 +21,7 @@ let isMealPlan = false;  // replace with a state variable
 
 function App() {
   return (
+    
     <Router>
       <GlobalStyle />
       <S.AppContainer >
