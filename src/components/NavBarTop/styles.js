@@ -30,28 +30,32 @@ export const Logo = styled.div`
 
 export const NavList = styled.ul`
   display: flex;
+  align-items: center;
   margin-right: var(--sp1);
   
   > li {
     margin-left: var(--sp2);
+    
   }
 `
 
 export const StyledNavLink = styled(NavLink)`
   color: var(--clr-wht);
   text-decoration: none;
+  height: var(--navBarTop-height);
   font-family: var(--ff-secondary);
   font-weight: var(--fw-s2);
   font-size: var(--fs-link);
   transition: color 1s;
+
   
   &:hover {
-    color: var(--clr-);
+    text-decoration: underline;
   }
 
 
   &.active {
-    color: var(--clr-ntrl-dk);
+    text-decoration: underline;
   }
 `
 
