@@ -8,7 +8,7 @@ import {
 import ROUTES from './routes';
 import NavBarTop from '../components/NavBarTop/NavBarTop';
 import Banner from '../components/Banner/Banner';
-import GetStarted from '../pages/getStarted';
+import GetStarted from '../pages/getStarted/getStarted';
 import Recipes from '../pages/recipes';
 import Calendar from '../pages/calendar';
 import Planner from '../pages/planner';

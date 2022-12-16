@@ -12,6 +12,7 @@ export const PageContainer = styled.div`
   width: var(--content-width);
   margin: 0 auto;
   position: relative;
-  top: var(--navBarTop-height)
+  top: var(--navBarTop-height);
+  text-align: center;
 `
 
