@@ -9,7 +9,7 @@ import ROUTES from './routes';
 import NavBarTop from '../components/NavBarTop/NavBarTop';
 import Banner from '../components/Banner/Banner';
 import GetStarted from '../pages/getStarted/getStarted';
-import Recipes from '../pages/recipes';
+import Recipes from '../pages/recipes/recipes';
 import Calendar from '../pages/calendar';
 import Planner from '../pages/planner';
 
