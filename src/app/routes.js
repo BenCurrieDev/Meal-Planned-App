@@ -1,7 +1,7 @@
 const ROUTES = {
   homeRoute: () => '/',
   recipesRoute: () => '/recipes',
-  plannerRoute: () => '/planner'
+  plannerRoute: () => '/planner',
 }
 
 export default ROUTES;

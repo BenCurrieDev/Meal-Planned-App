@@ -1,5 +1,4 @@
 import * as S from './styles';
-import { Link } from 'react-router-dom';
 
 import ROUTES from '../../app/routes';
 
