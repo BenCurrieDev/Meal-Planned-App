@@ -6,6 +6,8 @@ import { useState } from 'react';
 const Recipes = () => {
   const [ view, setView ] = useState('displayRecipes');
   
+  // SHOULD BE ABLE TO USE USEFFECT TO SET RENDERED VIEW, 
+  // THIS WILL REDUCE AMOUNT OF TIMES CONDITIONALS ARE EVALAUTED
 
   
   return (
