@@ -1,4 +1,5 @@
 import NewRecipeForm from '../../components/NewRecipeForm/NewRecipeForm';
+import RecipeDisplayArea from '../../components/RecipeDisplayArea/RecipeDisplayArea';
 import * as S from './styles';
 import { useState } from 'react';
 
@@ -15,7 +16,7 @@ const Recipes = () => {
       <h2>Manage your recipes</h2>
       <S.ManagementContainer>
         <h2>Recipes</h2>
-        {view === 'displayRecipes' && <h3>RECIPE VIEW</h3>}
+        {view === 'displayRecipes' && <RecipeDisplayArea />}
         {view === 'addRecipe' && <NewRecipeForm />}
         <button onClick={() => setView('displayRecipes')}>Manage Recipes</button>
         <button onClick={() => setView('addRecipe')}>Add Recipe</button>
