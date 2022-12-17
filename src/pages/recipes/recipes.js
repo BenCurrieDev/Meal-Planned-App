@@ -1,22 +1,22 @@
 import NewRecipeForm from '../../components/NewRecipeForm/NewRecipeForm';
 import * as S from './styles';
-
-
-
-
-let recipeMode = 'recipes/add';
+import { useState } from 'react';
 
 
 const Recipes = () => {
+  const [ view, setView ] = useState('displayRecipes');
+  
+
+  
   return (
     <main>
       <h2>Manage your recipes</h2>
       <S.ManagementContainer>
         <h2>Recipes</h2>
-        {recipeMode === 'recipes/view' && <h3>RECIPE VIEW</h3>}
-        {recipeMode === 'recipes/add' && <NewRecipeForm />}
-        <h4>Add Recipe</h4>
-
+        {view === 'displayRecipes' && <h3>RECIPE VIEW</h3>}
+        {view === 'addRecipe' && <NewRecipeForm />}
+        <button onClick={() => setView('displayRecipes')}>Manage Recipes</button>
+        <button onClick={() => setView('addRecipe')}>Add Recipe</button>
       </S.ManagementContainer>
     </main>
   );
