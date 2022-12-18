@@ -9,13 +9,13 @@ import UnitOptions from './UnitOptions';
 const NewRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
-  const [servings, setServings] = useState(2);
-  const [readyInMinutes, setReadyInMinutes] = useState(30);
+  const [servings, setServings] = useState(0);
+  const [readyInMinutes, setReadyInMinutes] = useState(0);
   const [instructions, setInstructions] = useState('');
-  const [ingredientsList, setIngredientsList] = useState({1: ''})
-  const [amountsList, setAmountsList] = useState({1: 0})
-  const [unitsList, setUnitsList] = useState({1: ''})
-  const [ingredientNum, setIngredientNum] = useState([1]);
+  const [ingredientsList, setIngredientsList] = useState({})
+  const [amountsList, setAmountsList] = useState({})
+  const [unitsList, setUnitsList] = useState({})
+  const [ingredientNum, setIngredientNum] = useState([]);
   const dispatch = useDispatch();
   
 
@@ -25,8 +25,24 @@ const NewRecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // check that all required info is there
+    // checks if title given
+    if (!title) {
+      alert('Please include a title for your recipe');
+      return;
+    }
+    // checks if ingredients all have 3 inputs
+    let testSuccess = true;
+    ingredientNum.forEach((id) => {
+      if (!ingredientsList.id || !amountsList.id || !unitsList.id) {
+        alert('Please ensure that each ingredient has an ingredient type, amount and measurement.\n\nIf an ingredient is not required, please remove the ingredient row and resubmit.');
+        testSuccess = false;
+      }
+    })
+    if (!testSuccess) return;
+    // checks if data for meal planner was submitted
+    if (!servings || !readyInMinutes || !ingredientNum[0]) {
+      alert('Mealsy notice:\n\nNot all features can be used with recipes that do not include the following:\n\nPortions, prep & cooking time and ingredients');
+    }
     
     // create id
     let newId = Math.floor(Math.random() * 5000); // THIS IS JUST A TEST ID, NEED TO IMPROVE
