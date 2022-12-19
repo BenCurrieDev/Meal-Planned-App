@@ -4,10 +4,14 @@ import { useSelector } from "react-redux";
 const RecipeCard = ( props ) => {
   const recipes = useSelector(selectRecipes);
   const recipe = recipes[props.id];
+  const isTime = recipe.readyInMinutes ? true : false;
   return (
     <li>
-        <button>{recipe.title}</button>
-        <button>x</button>
+        <button>
+          <h4>{recipe.title}</h4>
+          <p>{recipe.summary}</p>
+          <p>{isTime ? `Ready in ${recipe.readyInMinutes} minutes` : 'No prep & cooking time available'}</p>
+        </button>
     </li>
   )
 }

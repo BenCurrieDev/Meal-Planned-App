@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from './IngredientOptions';
+import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from './UnitOptions';
 
 
@@ -28,24 +29,27 @@ const NewRecipeForm = () => {
     e.preventDefault();
     // checks if title given
     if (!title) {
-      alert('Please include a title for your recipe');
+      alert('\nFORM SUBMITTED (ERROR: no title):\n\nPlease include a title for your recipe');
       return;
     }
     // checks if ingredients all have 3 inputs
     let testSuccess = true;
+    
     ingredientNum.forEach((id) => {
-      if (!ingredientsList.id || !amountsList.id || !unitsList.id) {
-        alert('Please ensure that each ingredient has an ingredient type, amount and measurement.\n\nIf an ingredient is not required, please remove the ingredient row and resubmit.');
+      console.log(id);
+      console.log(ingredientsList[id], amountsList[id], unitsList[id]);
+      if (!ingredientsList[id] || !amountsList[id] || !unitsList[id]) {
+        alert('\nFORM SUBMITTED (ERROR: incorrect ingredients format):\n\nPlease ensure that each ingredient has an ingredient type, amount and measurement.\n\nIf an ingredient is not required, please remove the ingredient row and resubmit.');
         testSuccess = false;
       }
     })
     if (!testSuccess) return;
     // checks if data for meal planner was submitted
     if (!servings || !readyInMinutes || !ingredientNum[0]) {
-      alert('Mealsy notice:\n\nNot all features can be used with recipes that do not include the following:\n\nPortions, prep & cooking time and ingredients');
+      alert('\nFORM SUBMITTED (USER NOTICE):\n\nNot all features can be used with recipes that do not include the following:\n\nPortions, prep & cooking time and ingredients');
     }
     
-    // creates id
+    // create id
     let newId = uuidv4();
 
     // create new recipe object
@@ -53,16 +57,36 @@ const NewRecipeForm = () => {
       id: newId,
       title: title,
       summary: summary,
-      instructions: instructions
+      servings: servings,
+      readyInMinutes: readyInMinutes,
+      instructions: instructions,
+      extendedIngredients: ingredientNum.map(num => {
+        const name = ingredientsList[num].toLowerCase();
+        const ingredientId = ingredientsToIds[name];
+        if (!ingredientId) {alert('\nFORM SUBMITTED (USER NOTICE):\n\nOne or more ingredients are not on our ingredients list.\n\nIf this is unexpected, please edit the recipe so that all ingredients appear on the list (ensure correct spelling).\n\nSome Mealsy features are only available for recipes that use listed ingredients.')}
+        return {
+          id: ingredientId,
+          name: name,
+          amount: amountsList[num],
+          unit: unitsList[num]
+        }
+      })
     }
     // add a new recipe to store
+    console.log(newRecipe);
     dispatch(addRecipe(newRecipe));
 
 
-
+    // reset new recipe state
     setTitle('');
     setSummary('');
+    setServings(0);
+    setReadyInMinutes(0);
     setInstructions('');
+    setIngredientNum([]);
+    setIngredientsList({});
+    setAmountsList({});
+    setUnitsList({});
   }
   
 
