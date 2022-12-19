@@ -8,11 +8,11 @@ const RecipeDisplayArea = () => {
   let isRecipe = recipeIds.length === 0 ? false : true;
   return (
     <div>
-        <h3>Your Recipes</h3>
+        <h3>Saved Recipes</h3>
         <ul>
             {isRecipe ? recipeIds.map((id) => (
                 <RecipeCard key={id} id={id}  />
-            )) : <h2>You do not have any saved recipes yet</h2>}
+            )) : <h4>You do not have any saved recipes yet</h4>}
         </ul>
     </div>
   )
