@@ -5000,11 +5000,18 @@ torn romaine lettuce;11251
 italian loaves;10028033
 `;
 
+// creates array with elements in format , ingredient;id,
+const split1 = csv.split('\n');
 
-let split1 = csv.split('\n');
+// creates array in format , [ingredient, id],
+const split2 = [];
+split1.forEach(element => split2.push(element.split(';')));
 
-let split2 = split1.map(string => string.slice(0, string.indexOf(';')));
+// creates object with key = ingredient value = id
+const ingredientsToIds = {};
+split2.forEach(element => ingredientsToIds[element[0]] = element[1]);
 
-export default split2;
+export default ingredientsToIds;
+
 
 

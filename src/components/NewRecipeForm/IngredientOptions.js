@@ -1,6 +1,6 @@
-import ingredientsData from './ingredientsData';
+import ingredientsToIds from '../../data/ingredientsData';
 
-const ingredientOptionsList = ingredientsData;
+const ingredientOptionsList = Object.keys(ingredientsToIds);
 
 
 const IngredientOptions = () => {
