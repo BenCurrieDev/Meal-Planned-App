@@ -26,8 +26,8 @@ const Recipes = () => {
     <main>
       <h2>Your Digital Recipe Book</h2>
       {view === 'displayRecipes' && <S.ManagementContainer><RecipeDisplayArea viewDetails={viewDetails}/><button onClick={() => setView('addRecipe')}>Create Recipe</button></S.ManagementContainer>}
-      {view === 'addRecipe' && <S.ManagementContainer><NewRecipeForm backToBook={backToBook}/><button onClick={() => setView('displayRecipes')}>Back</button></S.ManagementContainer>}
-      {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook}/><button onClick={() => setView('displayRecipes')}>Back</button></S.ManagementContainer>}
+      {view === 'addRecipe' && <S.ManagementContainer><NewRecipeForm backToBook={backToBook}/><button onClick={backToBook}>Back</button></S.ManagementContainer>}
+      {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook}/><button onClick={backToBook}>Back</button></S.ManagementContainer>}
     </main>
   );
 }

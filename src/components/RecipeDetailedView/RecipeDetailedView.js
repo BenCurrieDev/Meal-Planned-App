@@ -1,15 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeRecipe } from "../../features/recipes/recipesSlice";
 
 
-const RecipeDetailedView = ({ recipe }) => {
+const RecipeDetailedView = ({ recipe, backToBook }) => {
     const { id, title, summary, servings, readyInMinutes, instructions, extendedIngredients } = recipe;
-    
+    const dispatch = useDispatch();
+
+    const handleDelete = () => {
+        if (window.confirm(`Remove ${title} from your recipe book?`)) {
+            dispatch(removeRecipe(id));
+            backToBook();
+        }
+    }
     
     return (
      <>
        <h3>{title}</h3>
        <button><h4>Edit</h4></button>
-       <button><h4>Delete</h4></button>
+       <button onClick={handleDelete}><h4>Delete</h4></button>
        <h4>{summary}</h4>
        <p>{`Serves: ${servings}`}</p>
        <p>{`Prep & cooking time: ${readyInMinutes} minutes`}</p>
