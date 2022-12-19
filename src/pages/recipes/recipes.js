@@ -13,9 +13,8 @@ const Recipes = () => {
   
   return (
     <main>
-      <h2>Manage your recipes</h2>
+      <h2>Your Digital Recipe Book</h2>
       <S.ManagementContainer>
-        <h2>Recipes</h2>
         {view === 'displayRecipes' && <RecipeDisplayArea />}
         {view === 'addRecipe' && <NewRecipeForm />}
         <button onClick={() => setView('displayRecipes')}>Manage Recipes</button>
