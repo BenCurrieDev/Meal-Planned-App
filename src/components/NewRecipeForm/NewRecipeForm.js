@@ -36,8 +36,6 @@ const NewRecipeForm = () => {
     let testSuccess = true;
     
     ingredientNum.forEach((id) => {
-      console.log(id);
-      console.log(ingredientsList[id], amountsList[id], unitsList[id]);
       if (!ingredientsList[id] || !amountsList[id] || !unitsList[id]) {
         alert('\nFORM SUBMITTED (ERROR: incorrect ingredients format):\n\nPlease ensure that each ingredient has an ingredient type, amount and measurement.\n\nIf an ingredient is not required, please remove the ingredient row and resubmit.');
         testSuccess = false;
@@ -73,7 +71,6 @@ const NewRecipeForm = () => {
       })
     }
     // add a new recipe to store
-    console.log(newRecipe);
     dispatch(addRecipe(newRecipe));
 
 
@@ -153,7 +150,7 @@ const NewRecipeForm = () => {
       <h3>{title ? title : 'New Recipe'}</h3>
       <ul>
         <li>
-          <label for="title">Title: </label>
+          <label htmlFor="title">Title: </label>
           <input
             id="title"
             value={title}
@@ -162,7 +159,7 @@ const NewRecipeForm = () => {
           />
         </li>
         <li>
-          <label for="summary">Summary: </label>
+          <label htmlFor="summary">Summary: </label>
           <input
             id="summary"
             value={summary}
@@ -170,7 +167,7 @@ const NewRecipeForm = () => {
           />
         </li>
         <li>
-          <label for="portions">Portions: </label>
+          <label htmlFor="portions">Portions: </label>
           <input
             type="number"
             id="portions"
@@ -179,7 +176,7 @@ const NewRecipeForm = () => {
           />
         </li>
         <li>
-          <label for="prep">Prep & cooking time: </label>
+          <label htmlFor="prep">Prep & cooking time: </label>
           <input
             type="number"
             id="prep"
@@ -188,7 +185,7 @@ const NewRecipeForm = () => {
           />
         </li>
         <li>
-          <label for="instructions">Instructions: </label>
+          <label htmlFor="instructions">Instructions: </label>
           <input
             id="instructions"
             value={instructions}
@@ -225,7 +222,7 @@ const NewRecipeForm = () => {
             )
           })}
           
-          <label for="addRecipe">Add Ingredient: </label>
+          <label htmlFor="addRecipe">Add Ingredient: </label>
           <button type="button" id="addIngredient" onClick={addIngredient}>+</button>
         </li>
         <li>
