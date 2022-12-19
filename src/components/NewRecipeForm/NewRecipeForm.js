@@ -6,9 +6,10 @@ import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from './IngredientOptions';
 import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from './UnitOptions';
+import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 
 
-const NewRecipeForm = () => {
+const NewRecipeForm = (props) => {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [servings, setServings] = useState(0);
@@ -72,7 +73,7 @@ const NewRecipeForm = () => {
     }
     // add a new recipe to store
     dispatch(addRecipe(newRecipe));
-
+    
 
     // reset new recipe state
     setTitle('');
@@ -84,6 +85,9 @@ const NewRecipeForm = () => {
     setIngredientsList({});
     setAmountsList({});
     setUnitsList({});
+    
+    // send back to recipes view
+    props.backToBook();
   }
   
 

@@ -7,7 +7,7 @@ const RecipeCard = ( props ) => {
   const isTime = recipe.readyInMinutes ? true : false;
   return (
     <li>
-        <button>
+        <button onClick={() => props.viewDetails(recipe)}>
           <h4>{recipe.title}</h4>
           <p>{recipe.summary}</p>
           <p>{isTime ? `Ready in ${recipe.readyInMinutes} minutes` : 'No prep & cooking time available'}</p>
