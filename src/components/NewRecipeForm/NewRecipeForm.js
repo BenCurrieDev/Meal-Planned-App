@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as S from './styles';
 import { useDispatch } from 'react-redux';
+import {v4 as uuidv4} from 'uuid';
 import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from './IngredientOptions';
 import UnitOptions from './UnitOptions';
@@ -44,9 +45,10 @@ const NewRecipeForm = () => {
       alert('Mealsy notice:\n\nNot all features can be used with recipes that do not include the following:\n\nPortions, prep & cooking time and ingredients');
     }
     
-    // create id
-    let newId = Math.floor(Math.random() * 5000); // THIS IS JUST A TEST ID, NEED TO IMPROVE
-    // create recipe object
+    // creates id
+    let newId = uuidv4();
+
+    // create new recipe object
     let newRecipe = {
       id: newId,
       title: title,
