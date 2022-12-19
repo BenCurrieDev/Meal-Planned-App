@@ -1,23 +1,37 @@
-import { useState } from 'react';
 import * as S from './styles';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {v4 as uuidv4} from 'uuid';
 import { addRecipe } from '../../features/recipes/recipesSlice';
-import IngredientOptions from './IngredientOptions';
+import IngredientOptions from '../NewRecipeForm/IngredientOptions';
 import ingredientsToIds from '../../data/ingredientsData';
-import UnitOptions from './UnitOptions';
+import UnitOptions from '../NewRecipeForm/UnitOptions';
 
 
-const NewRecipeForm = (props) => {
-  const [title, setTitle] = useState('');
-  const [summary, setSummary] = useState('');
-  const [servings, setServings] = useState(0);
-  const [readyInMinutes, setReadyInMinutes] = useState(0);
-  const [instructions, setInstructions] = useState('');
-  const [ingredientsList, setIngredientsList] = useState({})
-  const [amountsList, setAmountsList] = useState({})
-  const [unitsList, setUnitsList] = useState({})
-  const [ingredientNum, setIngredientNum] = useState([]);
+const EditRecipeForm = ({ recipe, viewDetails }) => {
+
+  let startingIngredients = recipe.extendedIngredients;
+  let recipeId = recipe.id;
+  let ingredientNumStart = [];
+  let ingredientsListStart = {};
+  let amountsListStart = {};
+  let unitsListStart = {};
+  startingIngredients.forEach((ingredient, index) => {
+    ingredientNumStart.push(index+1);
+    ingredientsListStart[index+1] = ingredient.name;
+    amountsListStart[index+1] = ingredient.amount;
+    unitsListStart[index+1] = ingredient.unit;
+  })
+
+
+  const [title, setTitle] = useState(recipe.title);
+  const [summary, setSummary] = useState(recipe.summary);
+  const [servings, setServings] = useState(recipe.servings);
+  const [readyInMinutes, setReadyInMinutes] = useState(recipe.readyInMinutes);
+  const [instructions, setInstructions] = useState(recipe.instructions);
+  const [ingredientsList, setIngredientsList] = useState(ingredientsListStart)
+  const [amountsList, setAmountsList] = useState(amountsListStart)
+  const [unitsList, setUnitsList] = useState(unitsListStart)
+  const [ingredientNum, setIngredientNum] = useState(ingredientNumStart);
   const dispatch = useDispatch();
   
 
@@ -46,13 +60,10 @@ const NewRecipeForm = (props) => {
     if (!servings || !readyInMinutes || !ingredientNum[0]) {
       alert('\nFORM SUBMITTED (USER NOTICE):\n\nNot all features can be used with recipes that do not include the following:\n\nPortions, prep & cooking time and ingredients');
     }
-    
-    // create id
-    let newId = uuidv4();
 
     // create new recipe object
     let newRecipe = {
-      id: newId,
+      id: recipeId,                // CHANGE TO REAL ID
       title: title,
       summary: summary,
       servings: servings,
@@ -75,18 +86,9 @@ const NewRecipeForm = (props) => {
     
 
     // reset new recipe state
-    setTitle('');
-    setSummary('');
-    setServings(0);
-    setReadyInMinutes(0);
-    setInstructions('');
-    setIngredientNum([]);
-    setIngredientsList({});
-    setAmountsList({});
-    setUnitsList({});
-    
+
     // send back to recipes view
-    props.backToBook();
+    viewDetails(newRecipe);       // CHANGE TO TAKE US BACK TO THE DETAILED VIEW OF THIS RECIPE
   }
   
 
@@ -240,4 +242,4 @@ const NewRecipeForm = (props) => {
 
 }
 
-export default NewRecipeForm;
+export default EditRecipeForm;
