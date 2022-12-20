@@ -43,7 +43,7 @@ const Recipes = () => {
       {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></S.ManagementContainer>}
       {view === 'editRecipe' && <S.ManagementContainer><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></S.ManagementContainer>}
       <nav>
-        {bottomViewNavs[view].map(({text, newView}) => <button onClick={() => setView(newView)}>{text}</button>)}
+        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)}>{text}</button>)}
       </nav>
     </main>
   );
