@@ -5,6 +5,7 @@ import { useState } from 'react';
 import EditRecipeForm from '../../components/EditRecipeForm/EditRecipeForm';
 import RecipeDetailedView from '../../components/RecipeDetailedView/RecipeDetailedView';
 import { bottomViewNavs } from './viewNavs';
+import BrowseRecipes from '../../components/BrowseRecipes/BrowseRecipes';
 
 
 
@@ -38,7 +39,7 @@ const Recipes = () => {
       <h2>Your Digital Recipe Book</h2>
       {view === 'displayRecipes' && <S.ManagementContainer><RecipeDisplayArea viewDetails={viewDetails}/></S.ManagementContainer>}
       {view === 'addRecipe' && <S.ManagementContainer><NewRecipeForm backToBook={backToBook}/></S.ManagementContainer>}
-      {view === 'browseRecipes' && <S.ManagementContainer><h3>Working on browse component</h3></S.ManagementContainer>}
+      {view === 'browseRecipes' && <S.ManagementContainer><BrowseRecipes /></S.ManagementContainer>}
       {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></S.ManagementContainer>}
       {view === 'editRecipe' && <S.ManagementContainer><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></S.ManagementContainer>}
       <nav>
