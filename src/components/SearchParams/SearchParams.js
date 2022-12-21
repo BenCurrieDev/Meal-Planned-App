@@ -23,7 +23,7 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
       }
       console.log(paramObj);
       searchRecipes(paramObj);
-      
+
     }
 
     const handleChange = ({ target }) => {
@@ -40,7 +40,6 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
     }
 
     const handleShowCheck = ({ target }) => {
-      setDisableSearch(false);
       setShowOther(target.checked);
     }
 
@@ -53,6 +52,7 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
     }
 
     const handleTimeChange = ({target}) => {
+      setDisableSearch(false);
       setMaxReadyTime(target.value);
     }
     
@@ -62,7 +62,7 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
         <label htmlFor="recipeSearch">Search for new recipes:</label>
         <input type="search" id="recipeSearch" value={query} onChange={handleChange}/>
         <label htmlFor="time">Max Time:</label>
-        <select id="time" onChange={handleTimeChange}>
+        <select id="time" onChange={handleTimeChange} value={maxReadyTime}>
             <option value="">None</option>
             {searchParams.times.map((time, index) => <option key={index} value={time}>{time}</option>)}
         </select>
@@ -70,11 +70,11 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
         
         <fieldset>
           <legend>Dietary Requirements</legend>
-          <input type="checkbox" id="vegetarian" value="vegetarian" onChange={handleDietCheck}/>
+          <input type="checkbox" id="vegetarian" value="vegetarian" onChange={handleDietCheck} checked={diet.includes('vegetarian')}/>
           <label htmlFor="vegetarian">vegetarian</label>
-          <input type="checkbox" id="vegan" value="vegan" onChange={handleDietCheck}/>
+          <input type="checkbox" id="vegan" value="vegan" onChange={handleDietCheck} checked={diet.includes('vegan')}/>
           <label htmlFor="vegan">vegan</label>
-          <input type="checkbox" id="glutenfree" value="gluten free" onChange={handleDietCheck}/>
+          <input type="checkbox" id="glutenfree" value="gluten free" onChange={handleDietCheck} checked={diet.includes('gluten free')}/>
           <label htmlFor="glutenFree">gluten free</label>
           <input type="checkbox" id="other" onChange={handleShowCheck}/>
           <label htmlFor="other">other</label>
@@ -84,7 +84,7 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
                 {searchParams.intolerances.map((intolerance, index) => {
                   return (
                     <div key={index}>
-                      <input type="checkbox" id={index} value={intolerance} onChange={handleIntoleranceCheck}/>
+                      <input type="checkbox" id={index} value={intolerance} onChange={handleIntoleranceCheck} checked={intolerances.includes(intolerance)}/>
                       <label htmlFor={intolerance}>{intolerance}</label>
                     </div>
                   )
