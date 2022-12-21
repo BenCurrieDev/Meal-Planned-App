@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectQuery, selectCache } from "../../features/apiCalls/cachedSearchSlice";
 import BrowseCard from "../BrowseCard/BrowseCard";
-import AdditionalSearchParams from "../AdditionalSearchParams/AdditionalSearchParams";
+import SearchParams from "../SearchParams/SearchParams";
 
 
 
@@ -16,9 +16,7 @@ const BrowseRecipes = () => {
     const cache = useSelector(selectCache);
     
 
-    const handleChange = ({ target }) => {
-      setQuery(target.value);
-    }
+    
     
     const handleSearch = () => {
       // ensures same query not passed twice in succession to reduce unnecessary api calls
@@ -33,10 +31,12 @@ const BrowseRecipes = () => {
     return (
         <>
           <div>
-            <label htmlFor="recipeSearch">Search for new recipes:</label>
-            <input type="search" id="recipeSearch" value={query} onChange={handleChange}/>
-            <AdditionalSearchParams setDiet={setDiet} setIntolerances={setIntolerances} setMaxReadyTime={setMaxReadyTime} />
-            <button onClick={handleSearch}>Search</button>
+            <SearchParams 
+            query={query} setQuery={setQuery} 
+            diet={diet} setDiet={setDiet} 
+            intolerances={intolerances} setIntolerances={setIntolerances} 
+            maxReadyTime={maxReadyTime} setMaxReadyTime={setMaxReadyTime} 
+            />
           </div>
           <div>
             {cache.results.map((obj, index) => <BrowseCard key={index} searchResult={obj} />)}
