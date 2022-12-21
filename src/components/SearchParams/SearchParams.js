@@ -21,7 +21,6 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
         intolerances: intolerances,
         maxReadyTime: maxReadyTime
       }
-      console.log(paramObj);
       searchRecipes(paramObj);
 
     }
