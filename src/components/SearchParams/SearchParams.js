@@ -22,13 +22,13 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
         maxReadyTime: maxReadyTime
       }
       console.log(paramObj);
-      //searchRecipes(paramObj);
+      searchRecipes(paramObj);
+      
     }
 
     const handleChange = ({ target }) => {
        setDisableSearch(false);
        setQuery(target.value);
-       console.log(query);
     }
 
     const handleIntoleranceCheck = ({ target }) => {

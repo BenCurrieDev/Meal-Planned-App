@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { cachedSearch: {
-    query: '',
+    searchParams: {},
     result: {
         number: 0,
         results: [],
@@ -23,6 +23,6 @@ const cachedSearchSlice = createSlice({
 })
 
 export const selectCache = (state) => state.cachedSearch.cachedSearch.result;
-export const selectQuery = (state) => state.cachedSearch.cachedSearch.query;
+export const selectSearchParams = (state) => state.cachedSearch.cachedSearch.searchParams;
 export const { cacheSearch, deleteCache } = cachedSearchSlice.actions;
 export default cachedSearchSlice.reducer;
