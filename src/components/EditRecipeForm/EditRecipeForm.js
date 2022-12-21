@@ -50,7 +50,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
     let testSuccess = true;
     
     ingredientNum.forEach((id) => {
-      if (!ingredientsList[id] || !amountsList[id] || !unitsList[id]) {
+      if (!ingredientsList[id] || !amountsList[id] ) {
         alert('\nFORM SUBMITTED (ERROR: incorrect ingredients format):\n\nPlease ensure that each ingredient has an ingredient type, amount and measurement.\n\nIf an ingredient is not required, please remove the ingredient row and resubmit.');
         testSuccess = false;
       }
