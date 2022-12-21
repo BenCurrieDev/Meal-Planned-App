@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { selectQuery } from "../../features/apiCalls/cachedSearchSlice";
 import { searchRecipes } from "../BrowseRecipes/spoonCall";
 
 
@@ -9,31 +7,31 @@ const searchParams = {
     times: [5, 10, 15, 20, 30, 45, 60, 120]
   }
 
-const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, intolerances, setIntolerances, maxReadyTime, setMaxReadyTime }) => {
-    
-    const prevQuery = useSelector(selectQuery);
+const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, intolerances, setIntolerances, maxReadyTime, setMaxReadyTime, disableSearch, setDisableSearch }) => {
 
     const handleSearch = (e) => {
-      // ensures same query not passed twice in succession to reduce unnecessary api calls
       e.preventDefault();
-      if (query === prevQuery) {
-        return;
-      }
+      // prevents multiple searches until a search parameter is changed
+      if (disableSearch) return;
+      setDisableSearch(true);
       const paramObj = {
         query: query,
         diet: diet,
         intolerances: intolerances,
         maxReadyTime: maxReadyTime
       }
-      searchRecipes(paramObj);
+      console.log(paramObj);
+      //searchRecipes(paramObj);
     }
 
     const handleChange = ({ target }) => {
+       setDisableSearch(false);
        setQuery(target.value);
        console.log(query);
     }
 
     const handleIntoleranceCheck = ({ target }) => {
+       setDisableSearch(false);
        target.checked ? 
          setIntolerances(prev => [...prev, target.value])
          :
@@ -41,11 +39,12 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
     }
 
     const handleShowCheck = ({ target }) => {
+      setDisableSearch(false);
       setShowOther(target.checked);
-      console.log(target.checked);
     }
 
     const handleDietCheck = ({ target }) => {
+      setDisableSearch(false);
        target.checked ? 
          setDiet(prev => [...prev, target.value])
          :

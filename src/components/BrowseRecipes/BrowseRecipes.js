@@ -12,6 +12,7 @@ const BrowseRecipes = () => {
     const [diet, setDiet] = useState([]);
     const [intolerances, setIntolerances] = useState([]);
     const [maxReadyTime, setMaxReadyTime] = useState(0);
+    const [disableSearch, setDisableSearch] = useState(true);
     const cache = useSelector(selectCache);
     
     return (
@@ -23,6 +24,7 @@ const BrowseRecipes = () => {
               diet={diet} setDiet={setDiet} 
               intolerances={intolerances} setIntolerances={setIntolerances} 
               maxReadyTime={maxReadyTime} setMaxReadyTime={setMaxReadyTime} 
+              disableSearch={disableSearch} setDisableSearch={setDisableSearch} 
             />
           </div>
           <div>
