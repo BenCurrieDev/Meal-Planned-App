@@ -11,8 +11,9 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
 
     const handleSearch = (e) => {
       e.preventDefault();
-      // prevents multiple searches until a search parameter is changed
-      if (disableSearch) return;
+      // prevents multiple searches until a search parameter is changed or blank searches
+      if (disableSearch || !query) return;
+      
       setDisableSearch(true);
       const paramObj = {
         query: query,
@@ -50,6 +51,10 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
          :
          setDiet(() => diet.filter(d => target.value !== d));
     }
+
+    const handleTimeChange = ({target}) => {
+      setMaxReadyTime(target.value);
+    }
     
    
     return (
@@ -57,7 +62,7 @@ const SearchParams = ({showOther, setShowOther, query, setQuery, diet, setDiet, 
         <label htmlFor="recipeSearch">Search for new recipes:</label>
         <input type="search" id="recipeSearch" value={query} onChange={handleChange}/>
         <label htmlFor="time">Max Time:</label>
-        <select id="time">
+        <select id="time" onChange={handleTimeChange}>
             <option value="">None</option>
             {searchParams.times.map((time, index) => <option key={index} value={time}>{time}</option>)}
         </select>
