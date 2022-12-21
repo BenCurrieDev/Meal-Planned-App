@@ -1,4 +1,4 @@
-import * as S from './styles';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addRecipe } from '../../features/recipes/recipesSlice';

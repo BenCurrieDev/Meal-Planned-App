@@ -8,7 +8,7 @@ const BrowseDetails =  ({ activeId }) => {
     console.log('Logging cache: ', cachedRecipes)
     const details = cachedRecipes[activeId];
     console.log(details)
-    const { extendedIngredients, image, analyzedInstructions, readyInMinutes, servings, sourceName, sourceUrl, summary, title } = details;
+    const { extendedIngredients, image, analyzedInstructions, readyInMinutes, servings, title } = details;
     return (
         <>
         <h3>{title}</h3>
