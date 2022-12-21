@@ -9,7 +9,6 @@ import UnitOptions from './UnitOptions';
 
 const NewRecipeForm = (props) => {
   const [title, setTitle] = useState('');
-  const [summary, setSummary] = useState('');
   const [servings, setServings] = useState(0);
   const [readyInMinutes, setReadyInMinutes] = useState(0);
   const [instructions, setInstructions] = useState('');
@@ -53,7 +52,6 @@ const NewRecipeForm = (props) => {
     let newRecipe = {
       id: newId,
       title: title,
-      summary: summary,
       servings: servings,
       readyInMinutes: readyInMinutes,
       instructions: instructions,
@@ -75,7 +73,6 @@ const NewRecipeForm = (props) => {
 
     // reset new recipe state
     setTitle('');
-    setSummary('');
     setServings(0);
     setReadyInMinutes(0);
     setInstructions('');
@@ -158,14 +155,6 @@ const NewRecipeForm = (props) => {
             value={title}
             onChange={(e) => setTitle(e.currentTarget.value)}
             autoFocus
-          />
-        </li>
-        <li>
-          <label htmlFor="summary">Summary: </label>
-          <input
-            id="summary"
-            value={summary}
-            onChange={(e) => setSummary(e.currentTarget.value)}
           />
         </li>
         <li>

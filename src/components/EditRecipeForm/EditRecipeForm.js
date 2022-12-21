@@ -24,7 +24,6 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
 
 
   const [title, setTitle] = useState(recipe.title);
-  const [summary, setSummary] = useState(recipe.summary);
   const [servings, setServings] = useState(recipe.servings);
   const [readyInMinutes, setReadyInMinutes] = useState(recipe.readyInMinutes);
   const [instructions, setInstructions] = useState(recipe.instructions);
@@ -65,7 +64,6 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
     let newRecipe = {
       id: recipeId,                // CHANGE TO REAL ID
       title: title,
-      summary: summary,
       servings: servings,
       readyInMinutes: readyInMinutes,
       instructions: instructions,
@@ -161,14 +159,6 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
             value={title}
             onChange={(e) => setTitle(e.currentTarget.value)}
             autoFocus
-          />
-        </li>
-        <li>
-          <label htmlFor="summary">Summary: </label>
-          <input
-            id="summary"
-            value={summary}
-            onChange={(e) => setSummary(e.currentTarget.value)}
           />
         </li>
         <li>

@@ -3,7 +3,7 @@ import { removeRecipe } from "../../features/recipes/recipesSlice";
 
 
 const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
-    const { id, title, summary, servings, readyInMinutes, instructions, extendedIngredients } = recipe;
+    const { id, title, servings, readyInMinutes, instructions, extendedIngredients } = recipe;
     const dispatch = useDispatch();
 
     const handleDelete = () => {
@@ -18,7 +18,6 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
        <h3>{title}</h3>
        <button onClick={editRecipe}><h4>Edit</h4></button>
        <button onClick={handleDelete}><h4>Delete</h4></button>
-       <h4>{summary}</h4>
        <p>{`Serves: ${servings}`}</p>
        <p>{`Prep & cooking time: ${readyInMinutes} minutes`}</p>
        <h3>Instructions:</h3>
