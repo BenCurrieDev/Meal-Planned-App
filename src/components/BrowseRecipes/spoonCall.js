@@ -38,15 +38,10 @@ export const searchRecipes = async (obj) => {
 export const getRecipeInformation = async (id) => {
     const getInfoUrl = `${endpoints.getRecipeInformation}${id}/information?apiKey=${key}&includeNutrition=false`;
     try {
-        console.log('fetching')
         const response = await fetch(getInfoUrl);
         if (response.ok) {
-            console.log('response okay');
-            console.log('awaiting json response');
             const result = await response.json();
-            console.log('json received: ', result, 'dispatching to store');
             store.dispatch(cacheRecipe(result));
-            console.log('returning from api function');
             return true;
         }
         throw new Error(response.statusText);

@@ -5009,7 +5009,6 @@ split1.forEach(element => split2.push(element.split(';')));
 
 // creates object with key = ingredient value = id
 let ingredientsToIds = {};
-console.log('Parsing ingredient csv')
 split2.forEach(element => ingredientsToIds[element[0]] = element[1]);
 
 export default ingredientsToIds;

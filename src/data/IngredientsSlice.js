@@ -4,8 +4,6 @@ import ingredientsToIds from "./ingredientsData";
 
 
 const initialState = {ingredients: ingredientsToIds};
-console.log(ingredientsToIds)
-console.log(initialState.ingredients)
 
 const ingredientsSlice = createSlice({
     name: 'ingredients',

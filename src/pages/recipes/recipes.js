@@ -37,7 +37,6 @@ const Recipes = () => {
 
 
   const editRecipe = () => {
-    console.log('Edit click registered');
     setView('editRecipe');
   }
 
