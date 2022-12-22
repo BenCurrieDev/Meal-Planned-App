@@ -19,8 +19,8 @@ const BrowseCard = (props) => {
      } 
     console.log('Info in cache');
     // pass info to new view component and switch view
-    props.setActiveId(id);
-    props.setDetailedView(true);
+   
+    props.browseDetails(id);
 
   }
      

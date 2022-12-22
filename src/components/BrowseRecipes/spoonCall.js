@@ -11,7 +11,6 @@ const endpoints = {
 }
 
 const listToString = (list, string) => {
-    console.log(list);
     if (list.length === 0) return "";
     return `&${string}=${list.toString()}`;
 }

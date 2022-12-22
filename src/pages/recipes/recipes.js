@@ -6,6 +6,7 @@ import EditRecipeForm from '../../components/EditRecipeForm/EditRecipeForm';
 import RecipeDetailedView from '../../components/RecipeDetailedView/RecipeDetailedView';
 import { bottomViewNavs } from './viewNavs';
 import BrowseRecipes from '../../components/BrowseRecipes/BrowseRecipes';
+import BrowseDetails from '../../components/BrowseDetails/BrowseDetails';
 
 
 
@@ -13,6 +14,7 @@ import BrowseRecipes from '../../components/BrowseRecipes/BrowseRecipes';
 const Recipes = () => {
   const [ view, setView ] = useState('displayRecipes');
   const [ activeRecipe, setActiveRecipe ] = useState('');
+  const [ browseId, setBrowseId ] = useState('');
   // SHOULD BE ABLE TO USE USEFFECT TO SET RENDERED VIEW, 
   // THIS WILL REDUCE AMOUNT OF TIMES CONDITIONALS ARE EVALAUTED
   
@@ -23,10 +25,16 @@ const Recipes = () => {
     setView('displayRecipes');
   }
 
-  const viewDetails = (recipe) => {
-    setActiveRecipe(recipe);
+  const viewDetails = (recipe="") => {
+    recipe && setActiveRecipe(recipe);
     setView('detailedRecipe');
   }
+  
+  const browseDetails = (id) => {
+    setBrowseId(id);
+    setView('browseDetails');
+  }
+
 
   const editRecipe = () => {
     console.log('Edit click registered');
@@ -39,8 +47,9 @@ const Recipes = () => {
       <h2>Your Digital Recipe Book</h2>
       {view === 'displayRecipes' && <S.ManagementContainer><RecipeDisplayArea viewDetails={viewDetails}/></S.ManagementContainer>}
       {view === 'addRecipe' && <S.ManagementContainer><NewRecipeForm backToBook={backToBook}/></S.ManagementContainer>}
-      {view === 'browseRecipes' && <S.ManagementContainer><BrowseRecipes /></S.ManagementContainer>}
+      {view === 'browseRecipes' && <S.ManagementContainer><BrowseRecipes browseDetails={browseDetails}/></S.ManagementContainer>}
       {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></S.ManagementContainer>}
+      {view === 'browseDetails' && <S.ManagementContainer><BrowseDetails browseId={browseId} viewDetails={viewDetails}/></S.ManagementContainer>}
       {view === 'editRecipe' && <S.ManagementContainer><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></S.ManagementContainer>}
       <nav>
         {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)}>{text}</button>)}

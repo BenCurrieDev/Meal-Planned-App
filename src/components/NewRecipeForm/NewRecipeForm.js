@@ -47,9 +47,9 @@ const NewRecipeForm = (props) => {
     
     // create id
     let newId = uuidv4();
-
+    let ingrAlert = false;
     // create new recipe object
-    let newRecipe = {
+    const newRecipe = {
       id: newId,
       title: title,
       servings: servings,
@@ -58,7 +58,7 @@ const NewRecipeForm = (props) => {
       extendedIngredients: ingredientNum.map(num => {
         const name = ingredientsList[num].toLowerCase();
         const ingredientId = ingredientsToIds[name];
-        if (!ingredientId) {alert('\nFORM SUBMITTED (USER NOTICE):\n\nOne or more ingredients are not on our ingredients list.\n\nIf this is unexpected, please edit the recipe so that all ingredients appear on the list (ensure correct spelling).\n\nSome Mealsy features are only available for recipes that use listed ingredients.')}
+        if (!ingredientId) ingrAlert=true;
         return {
           id: ingredientId,
           name: name,
@@ -67,6 +67,7 @@ const NewRecipeForm = (props) => {
         }
       })
     }
+    if (ingrAlert) alert('\nFORM SUBMITTED (USER NOTICE):\n\nOne or more ingredients are not on our ingredients list.\n\nIf this is unexpected, please edit the recipe so that all ingredients appear on the list (ensure correct spelling).\n\nSome Mealsy features are only available for recipes that use listed ingredients.')
     // add a new recipe to store
     dispatch(addRecipe(newRecipe));
     

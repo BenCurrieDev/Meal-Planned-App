@@ -22,15 +22,17 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
             <p>{`Prep & cooking time: ${readyInMinutes} minutes`}</p>
             <h3>Ingredients:</h3>
             <table>
-                {extendedIngredients.map(({ name, amount, unit }) => {
-                    return (
-                        <tr>
-                            <td>{name}</td>
-                            <td>{amount}</td>
-                            <td>{unit}{amount > 1 && 's'}</td>
-                        </tr>
-                    )
-                })}
+                <tbody>
+                    {extendedIngredients.map(({ name, amount, unit }, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{name}</td>
+                                <td>{amount}</td>
+                                <td>{unit}{amount > 1 && 's'}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
             </table>
             <h3>Instructions:</h3>
             <p>{instructions}</p>

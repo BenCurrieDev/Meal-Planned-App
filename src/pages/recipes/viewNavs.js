@@ -16,5 +16,8 @@ export const bottomViewNavs = {
     editRecipe: [
         {text: 'Cancel Edit', newView: 'detailedRecipe'}
 
+    ],
+    browseDetails: [
+        {text: 'Back', newView: 'browseRecipes'}
     ]
   }
