@@ -28,7 +28,7 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
                             <tr key={index}>
                                 <td>{name}</td>
                                 <td>{amount}</td>
-                                <td>{unit}{amount > 1 && 's'}</td>
+                                <td>{unit}</td>
                             </tr>
                         )
                     })}

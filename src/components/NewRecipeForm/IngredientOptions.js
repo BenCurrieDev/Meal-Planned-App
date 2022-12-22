@@ -1,12 +1,8 @@
-import ingredientsToIds from '../../data/ingredientsData';
 
-const ingredientOptionsList = Object.keys(ingredientsToIds);
-
-
-const IngredientOptions = () => {
+const IngredientOptions = ({ingredients}) => {
     return (
         <datalist id="ingredientOptions">
-            {ingredientOptionsList.map((ingredient, index) => {
+            {ingredients.map((ingredient, index) => {
                 return <option key={index} value={ingredient} />
             })}
         </datalist>

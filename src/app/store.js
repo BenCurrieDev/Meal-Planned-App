@@ -12,7 +12,7 @@ const persistedState = loadState();
 export const store = configureStore({
   reducer: {
     recipes: RecipesSlice,
-    allIngredients: IngredientsSlice,
+    ingredients: IngredientsSlice,
     cachedSearch: cachedSearchSlice
   },
   preloadedState: persistedState

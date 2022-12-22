@@ -5,10 +5,13 @@ import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from '../NewRecipeForm/IngredientOptions';
 import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from '../NewRecipeForm/UnitOptions';
+import { useSelector } from 'react-redux';
+import { selectAllIngredients } from '../../data/IngredientsSlice';
 
 
 const EditRecipeForm = ({ recipe, viewDetails }) => {
-
+  const ingredientOptions = useSelector(selectAllIngredients);
+  const ingredientOptionsList = Object.keys(ingredientOptions);
   let startingIngredients = recipe.extendedIngredients;
   let recipeId = recipe.id;
   let ingredientNumStart = [];
@@ -199,7 +202,6 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
                   value={ingredientsList[index]} 
                   onChange={(e) => handleIngredientChange(e, index)}
                 />
-                <IngredientOptions />
                 <input 
                   id={`amount${index}`} 
                   value={amountsList[index]} 
@@ -211,11 +213,13 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
                   value={unitsList[index]} 
                   onChange={(e) => handleUnitChange(e, index)}
                 />
-                <UnitOptions />
+                
                 <button type="button" onClick={() => removeIngredient(index)}>-</button>
               </div>  
             )
           })}
+          <IngredientOptions ingredients={ingredientOptionsList} />
+          <UnitOptions />
           
           <label htmlFor="addRecipe">Add Ingredient: </label>
           <button type="button" id="addIngredient" onClick={addIngredient}>+</button>
