@@ -15,7 +15,7 @@ export const handler = async function (event, context) {
         return {
             statusCode: 404,
             body: JSON.stringify({ 
-                message: "Hello World",
+                message: "Error: Spoonacular call failed",
                 params: params,
          }),
         }
