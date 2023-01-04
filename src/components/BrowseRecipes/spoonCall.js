@@ -1,14 +1,5 @@
-import { keys } from './config';
 import { store } from '../../app/store';
 import { cacheSearch, cacheRecipe } from '../../features/apiCalls/cachedSearchSlice';
-
-
-const key = keys.spoonKey;
-
-const endpoints = {
-    searchRecipes: "https://api.spoonacular.com/recipes/complexSearch",
-    getRecipeInformation: "https://api.spoonacular.com/recipes/"
-}
 
 const listToString = (list, string) => {
     if (list.length === 0) return "";
@@ -16,13 +7,15 @@ const listToString = (list, string) => {
 }
 
 export const searchRecipes = async (obj) => {
-    const searchUrl = `${endpoints.searchRecipes}?apiKey=${key}&query=${obj.query}`;
+    
+    const queryUrl = `query=${obj.query}`;
     const dietUrl = listToString(obj.diet, 'diet');
     const intolerancesUrl = listToString(obj.intolerances, 'intolerances');
     const timeUrl = obj.maxReadyTime ? `&maxReadyTime=${obj.maxReadyTime}` : '';
-    const advancedSearchUrl = `${searchUrl}${dietUrl}${intolerancesUrl}${timeUrl}`;
+    const params = `${queryUrl}${dietUrl}${intolerancesUrl}${timeUrl}`;
+    const url = `/.netlify/functions/search?${params}`;
     try {
-        const response = await fetch(advancedSearchUrl);
+        const response = await fetch(url);
         if (response.ok) {
             const result = await response.json();
             const toCache = {searchParams: obj, result: result}
@@ -30,15 +23,16 @@ export const searchRecipes = async (obj) => {
             return;
         }
         throw new Error(response.statusText);
-        } catch (error) {
+    } catch (error) {
         console.log(error);
     } 
+  
 }
 
 export const getRecipeInformation = async (id) => {
-    const getInfoUrl = `${endpoints.getRecipeInformation}${id}/information?apiKey=${key}&includeNutrition=false`;
+    const url = `/.netlify/functions/getInfo?id=${id}`;
     try {
-        const response = await fetch(getInfoUrl);
+        const response = await fetch(url);
         if (response.ok) {
             const result = await response.json();
             store.dispatch(cacheRecipe(result));
@@ -48,6 +42,6 @@ export const getRecipeInformation = async (id) => {
     } catch (error) {
         console.log(error);
         return false;
-    }
+    };
     
 }
