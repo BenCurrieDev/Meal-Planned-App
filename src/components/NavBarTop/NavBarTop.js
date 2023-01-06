@@ -1,34 +1,31 @@
 import ROUTES from "../../app/routes";
-
-import * as S from './styles';
-
-
+import { NavLink } from "react-router-dom";
 
 let isMealPlan = false;  // replace with a state variable
 let currentDayView = 'Today';  // replace with a state variable
 
 const NavBarTop = () => {
   return (
-    <S.NavBarTop>
-      <S.Logo />
-      <S.NavList>
+    <nav>
+      <div></div>
+      <ul>
         <li>
-          <S.StyledNavLink to={ROUTES.homeRoute()} activeClassName="active">
+          <NavLink to={ROUTES.homeRoute()}>
             {isMealPlan ? currentDayView : 'Get Started'}
-          </S.StyledNavLink>
+          </NavLink>
         </li>
         <li>
-          <S.StyledNavLink to={ROUTES.recipesRoute()} activeClassName="active">
+          <NavLink to={ROUTES.recipesRoute()}>
             Recipes
-          </S.StyledNavLink>
+          </NavLink>
         </li>
         <li>
-          <S.StyledNavLink to={ROUTES.plannerRoute()} activeClassName="active">
+          <NavLink to={ROUTES.plannerRoute()}>
             Planner
-          </S.StyledNavLink>
+          </NavLink>
         </li>
-      </S.NavList>
-    </S.NavBarTop>
+      </ul>
+    </nav>
   )
 }
 
