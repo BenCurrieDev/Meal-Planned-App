@@ -41,7 +41,7 @@ const Recipes = () => {
 
   
   return (
-    <main>
+    <main className='relative top-14'>
       <h2>Your Digital Recipe Book</h2>
       {view === 'displayRecipes' && <div><RecipeDisplayArea viewDetails={viewDetails}/></div>}
       {view === 'addRecipe' && <div><NewRecipeForm backToBook={backToBook}/></div>}
