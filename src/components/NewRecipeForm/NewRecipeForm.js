@@ -95,21 +95,15 @@ const NewRecipeForm = (props) => {
 
   const addIngredient = () => {
     // next id = 1 if no current ingredients / else = last id + 1
-    console.log("addIngredient called");
     let next = 1;
     if (ingredientNum.length !== 0) {
       next = ingredientNum.at(-1) + 1;
     }
 
-    console.log("logging next:", next)
     
-    console.log('starting next action');
     setIngredientNum((prev) => [...prev, next]);
-    console.log('starting next action');
     setIngredientsList((prev) => {return {...prev, [next]: ''}});
-    console.log('starting next action');
     setAmountsList((prev) => {return {...prev, [next]: 0}});
-    console.log('starting next action');
     setUnitsList((prev) => {return {...prev, [next]: ''}});
   }
 
