@@ -41,16 +41,18 @@ const Recipes = () => {
 
   
   return (
-    <main className='relative top-14'>
-      <h2>Your Digital Recipe Book</h2>
+    <main className='relative top-14 bg-gray-200'>
+      <div className=" bg-gray-700">
+        <h2 className="text-white text-3xl font-normal text-center pb-6">Your Digital Recipe Book</h2>
+      </div>
       {view === 'displayRecipes' && <div><RecipeDisplayArea viewDetails={viewDetails}/></div>}
       {view === 'addRecipe' && <div><NewRecipeForm backToBook={backToBook}/></div>}
       {view === 'browseRecipes' && <div><BrowseRecipes browseDetails={browseDetails}/></div>}
       {view === 'detailedRecipe' && <div><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></div>}
       {view === 'browseDetails' && <div><BrowseDetails browseId={browseId} viewDetails={viewDetails}/></div>}
       {view === 'editRecipe' && <div><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></div>}
-      <nav>
-        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)}>{text}</button>)}
+      <nav className='flex justify-center'>
+        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)} className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 m-2 text-xl font-light mt-8 mb-12">{text}</button>)}
       </nav>
     </main>
   );

@@ -22,7 +22,7 @@ function App() {
 		<Router>
 			<div className='min-h-full'>
 				<NavBarTop />
-				<div>
+				<div className='min-h-full'>
 					<Routes>
 						<Route path={ROUTES.homeRoute()} element={<GetStarted />} />
 						<Route path={ROUTES.recipesRoute()} element={<Recipes />} />

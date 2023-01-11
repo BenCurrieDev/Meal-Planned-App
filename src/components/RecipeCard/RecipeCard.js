@@ -6,10 +6,10 @@ const RecipeCard = ( props ) => {
   const recipe = recipes[props.id];
   const isTime = recipe.readyInMinutes ? true : false;
   return (
-    <li>
-        <button onClick={() => props.viewDetails(recipe)}>
-          <h4>{recipe.title}</h4>
-          <p>{isTime ? `Ready in ${recipe.readyInMinutes} minutes` : 'No prep & cooking time available'}</p>
+    <li className="w-full">
+        <button onClick={() => props.viewDetails(recipe)} className="rounded-md bg-gray-100 mb-2 w-full shadow-sm">
+          <h4 className="text-gray-800 text-lg font-medium py-2 text-left px-2 w-full">{recipe.title}</h4>
+          
         </button>
     </li>
   )
