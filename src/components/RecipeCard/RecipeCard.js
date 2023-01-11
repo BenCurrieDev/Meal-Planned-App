@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const RecipeCard = ( props ) => {
   const recipes = useSelector(selectRecipes);
   const recipe = recipes[props.id];
-  const isTime = recipe.readyInMinutes ? true : false;
+
   return (
     <li className="w-full">
         <button onClick={() => props.viewDetails(recipe)} className="rounded-md bg-gray-100 mb-2 w-full shadow-sm">
