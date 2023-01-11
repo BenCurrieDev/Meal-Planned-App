@@ -5,9 +5,13 @@ import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from './IngredientOptions';
 import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from './UnitOptions';
+import { useSelector } from 'react-redux';
+import { selectAllIngredients } from '../../data/IngredientsSlice';
 
 
 const NewRecipeForm = (props) => {
+  const ingredientOptions = useSelector(selectAllIngredients);
+  const ingredientOptionsList = Object.keys(ingredientOptions);
   const [title, setTitle] = useState('');
   const [servings, setServings] = useState(0);
   const [readyInMinutes, setReadyInMinutes] = useState(0);
@@ -91,14 +95,21 @@ const NewRecipeForm = (props) => {
 
   const addIngredient = () => {
     // next id = 1 if no current ingredients / else = last id + 1
+    console.log("addIngredient called");
     let next = 1;
     if (ingredientNum.length !== 0) {
       next = ingredientNum.at(-1) + 1;
     }
+
+    console.log("logging next:", next)
     
+    console.log('starting next action');
     setIngredientNum((prev) => [...prev, next]);
+    console.log('starting next action');
     setIngredientsList((prev) => {return {...prev, [next]: ''}});
+    console.log('starting next action');
     setAmountsList((prev) => {return {...prev, [next]: 0}});
+    console.log('starting next action');
     setUnitsList((prev) => {return {...prev, [next]: ''}});
   }
 
@@ -147,10 +158,10 @@ const NewRecipeForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>{title ? title : 'New Recipe'}</h3>
+      <h2 className="text-gray-900 text-xl font-medium py-2 text-center">{title ? title : 'New Recipe'}</h2>
       <ul>
         <li>
-          <label htmlFor="title">Title: </label>
+          <label htmlFor="title" className='block'>Title: </label>
           <input
             id="title"
             value={title}
@@ -159,7 +170,7 @@ const NewRecipeForm = (props) => {
           />
         </li>
         <li>
-          <label htmlFor="portions">Portions: </label>
+          <label htmlFor="portions" className='block'>Portions: </label>
           <input
             type="number"
             id="portions"
@@ -168,7 +179,7 @@ const NewRecipeForm = (props) => {
           />
         </li>
         <li>
-          <label htmlFor="prep">Prep & cooking time: </label>
+          <label htmlFor="prep" className='block'>Prep & cooking time: </label>
           <input
             type="number"
             id="prep"
@@ -177,7 +188,7 @@ const NewRecipeForm = (props) => {
           />
         </li>
         <li>
-          <label htmlFor="instructions">Instructions: </label>
+          <label htmlFor="instructions" className='block'>Instructions: </label>
           <input
             id="instructions"
             value={instructions}
@@ -196,7 +207,7 @@ const NewRecipeForm = (props) => {
                   value={ingredientsList[index]} 
                   onChange={(e) => handleIngredientChange(e, index)}
                 />
-                <IngredientOptions />
+                
                 <input 
                   id={`amount${index}`} 
                   value={amountsList[index]} 
@@ -208,11 +219,13 @@ const NewRecipeForm = (props) => {
                   value={unitsList[index]} 
                   onChange={(e) => handleUnitChange(e, index)}
                 />
-                <UnitOptions />
+                
                 <button type="button" onClick={() => removeIngredient(index)}>-</button>
               </div>  
             )
           })}
+          <IngredientOptions ingredients={ingredientOptionsList}/>
+          <UnitOptions />
           
           <label htmlFor="addRecipe">Add Ingredient: </label>
           <button type="button" id="addIngredient" onClick={addIngredient}>+</button>
