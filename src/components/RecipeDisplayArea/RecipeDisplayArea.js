@@ -11,7 +11,7 @@ const RecipeDisplayArea = (props) => {
         <ul className="m-4 flex flex-wrap">
             {isRecipe ? recipeIds.map((id) => (
                 <RecipeCard key={id} id={id} viewDetails={props.viewDetails}/>
-            )) : <h4>No saved recipes</h4>}
+            )) : <h4 className="text-gray-800 text-lg font-medium text-center w-full">No saved recipes</h4>}
         </ul>
     </div>
   )

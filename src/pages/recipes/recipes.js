@@ -41,7 +41,7 @@ const Recipes = () => {
 
   
   return (
-    <main className='relative top-14 bg-gray-200'>
+    <main className='relative top-14 bg-gray-200 h-full'>
       <div className=" bg-gray-700">
         <h2 className="text-white text-3xl font-normal text-center pb-6">Your Digital Recipe Book</h2>
       </div>
@@ -52,7 +52,7 @@ const Recipes = () => {
       {view === 'browseDetails' && <div><BrowseDetails browseId={browseId} viewDetails={viewDetails}/></div>}
       {view === 'editRecipe' && <div><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></div>}
       <nav className='flex justify-center'>
-        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)} className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 m-2 text-xl font-light mt-8 mb-12">{text}</button>)}
+        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)} className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 m-2 text-xl font-light mb-12">{text}</button>)}
       </nav>
     </main>
   );
