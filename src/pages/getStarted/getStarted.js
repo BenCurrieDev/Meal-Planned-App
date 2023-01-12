@@ -5,7 +5,7 @@ import ROUTES from "../../app/routes";
 
 const GetStarted = () => {
   return (
-    <main className='relative top-14'>
+    <main>
       <Banner />
       <div className="bg-gray-200 text-center">
         <h2 className="text-gray-900 text-xl font-medium pt-10">
@@ -38,7 +38,7 @@ const GetStarted = () => {
         <p className="mx-4 font-light text-sm pt-2 text-gray-700">
           Have Mealsy generate meal plans and shopping lists for you. Keep things fresh with randomisation, or simply create and re-use meal plans that work best for you.
         </p>
-        <Link to={ROUTES.recipesRoute()}><button className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 mx-auto text-xl font-light mt-8 mb-12">Get Started</button></Link>
+        <Link to={ROUTES.recipesRoute()}><button className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 mx-auto text-xl font-light mt-8 mb-28">Get Started</button></Link>
       </div>
       
     </main>

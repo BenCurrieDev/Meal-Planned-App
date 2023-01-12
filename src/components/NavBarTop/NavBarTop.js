@@ -6,7 +6,7 @@
 
 const NavBarTop = () => {
 	return (
-		<div className="flex justify-between bg-gray-700 h-14 fixed z-20 top-0 w-screen">
+		<div className="flex justify-between bg-gray-700 h-14 fixed z-20 bottom-0 w-screen">
 			<img src="./Logo-White-117x35.png" alt="logo" className="py-4 pl-6" />
 			<span className="material-symbols-outlined text-white flex items-center text-2xl pr-6">
 				menu

@@ -41,9 +41,9 @@ const Recipes = () => {
 
   
   return (
-    <main className='relative top-14 bg-gray-200 h-full'>
+    <main className=' bg-gray-200 h-full'>
       <div className=" bg-gray-700">
-        <h2 className="text-white text-3xl font-normal text-center pb-6">Your Digital Recipe Book</h2>
+        <h2 className="text-white text-3xl font-normal text-center py-6">Your Digital Recipe Book</h2>
       </div>
       {view === 'displayRecipes' && <div><RecipeDisplayArea viewDetails={viewDetails}/></div>}
       {view === 'addRecipe' && <div><NewRecipeForm backToBook={backToBook}/></div>}
