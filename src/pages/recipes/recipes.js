@@ -1,6 +1,5 @@
 import NewRecipeForm from '../../components/NewRecipeForm/NewRecipeForm';
 import RecipeDisplayArea from '../../components/RecipeDisplayArea/RecipeDisplayArea';
-import * as S from './styles';
 import { useState } from 'react';
 import EditRecipeForm from '../../components/EditRecipeForm/EditRecipeForm';
 import RecipeDetailedView from '../../components/RecipeDetailedView/RecipeDetailedView';
@@ -42,16 +41,18 @@ const Recipes = () => {
 
   
   return (
-    <main>
-      <h2>Your Digital Recipe Book</h2>
-      {view === 'displayRecipes' && <S.ManagementContainer><RecipeDisplayArea viewDetails={viewDetails}/></S.ManagementContainer>}
-      {view === 'addRecipe' && <S.ManagementContainer><NewRecipeForm backToBook={backToBook}/></S.ManagementContainer>}
-      {view === 'browseRecipes' && <S.ManagementContainer><BrowseRecipes browseDetails={browseDetails}/></S.ManagementContainer>}
-      {view === 'detailedRecipe' && <S.ManagementContainer><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></S.ManagementContainer>}
-      {view === 'browseDetails' && <S.ManagementContainer><BrowseDetails browseId={browseId} viewDetails={viewDetails}/></S.ManagementContainer>}
-      {view === 'editRecipe' && <S.ManagementContainer><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></S.ManagementContainer>}
-      <nav>
-        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)}>{text}</button>)}
+    <main className='min-h-full bg-gray-200'>
+      <div className=" bg-gray-700">
+        <h2 className="text-white text-3xl font-normal text-center py-6">Your Digital Recipe Book</h2>
+      </div>
+      {view === 'displayRecipes' && <div><RecipeDisplayArea viewDetails={viewDetails}/></div>}
+      {view === 'addRecipe' && <div><NewRecipeForm backToBook={backToBook}/></div>}
+      {view === 'browseRecipes' && <div><BrowseRecipes browseDetails={browseDetails}/></div>}
+      {view === 'detailedRecipe' && <div><RecipeDetailedView recipe={activeRecipe} backToBook={backToBook} editRecipe={editRecipe}/></div>}
+      {view === 'browseDetails' && <div><BrowseDetails browseId={browseId} viewDetails={viewDetails}/></div>}
+      {view === 'editRecipe' && <div><EditRecipeForm recipe={activeRecipe} viewDetails={viewDetails}/></div>}
+      <nav className='flex justify-center'>
+        {bottomViewNavs[view].map(({text, newView}, index) => <button key={index} onClick={() => setView(newView)} className="rounded-2xl bg-gray-700 text-gray-200 py-2 px-4 m-2 text-xl font-light mb-20">{text}</button>)}
       </nav>
     </main>
   );

@@ -14,29 +14,33 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
     }
 
     return (
-        <>
-            <h3>{title}</h3>
-            <button onClick={editRecipe}><h4>Edit</h4></button>
-            <button onClick={handleDelete}><h4>Delete</h4></button>
-            <p>{`Serves: ${servings}`}</p>
-            <p>{`Prep & cooking time: ${readyInMinutes} minutes`}</p>
-            <h3>Ingredients:</h3>
+        <div className="flex flex-col items-center">
+            <h3 className="text-gray-900 text-xl font-medium mt-6 mb-2 text-center">{title}</h3>
+            <div className="flex items-center content-center">
+                <button onClick={editRecipe} className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 text-lg font-light"><h4>Edit</h4></button>
+                <button onClick={handleDelete} className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 ml-2 text-lg font-light"><h4>Delete</h4></button>
+            </div>
+            <div className="flex text-sm my-2">
+                <p>Serves: {servings}</p>
+                <p className="ml-4">Prep & cooking time: {readyInMinutes}</p>
+            </div>
+            <h3 className="text-lg">Ingredients:</h3>
             <table>
-                <tbody>
+                <tbody className="text-xs text-gray-600">
                     {extendedIngredients.map(({ name, amount, unit }, index) => {
                         return (
                             <tr key={index}>
-                                <td>{name}</td>
-                                <td>{amount}</td>
-                                <td>{unit}</td>
+                                <td className="text-right px-2">{`${amount} ${unit}`}</td>
+                                <td >{name}</td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-            <h3>Instructions:</h3>
-            <p>{instructions}</p>
-        </>
+            <h3 className="text-lg mt-2">Instructions:</h3>
+            <p className="mx-4 text-sm text-gray-600 text-center mt-2 mb-4">{instructions}</p>
+        </div>
+        
 
     )
 }

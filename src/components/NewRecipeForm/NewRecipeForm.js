@@ -5,9 +5,13 @@ import { addRecipe } from '../../features/recipes/recipesSlice';
 import IngredientOptions from './IngredientOptions';
 import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from './UnitOptions';
+import { useSelector } from 'react-redux';
+import { selectAllIngredients } from '../../data/IngredientsSlice';
 
 
 const NewRecipeForm = (props) => {
+  const ingredientOptions = useSelector(selectAllIngredients);
+  const ingredientOptionsList = Object.keys(ingredientOptions);
   const [title, setTitle] = useState('');
   const [servings, setServings] = useState(0);
   const [readyInMinutes, setReadyInMinutes] = useState(0);
@@ -95,6 +99,7 @@ const NewRecipeForm = (props) => {
     if (ingredientNum.length !== 0) {
       next = ingredientNum.at(-1) + 1;
     }
+
     
     setIngredientNum((prev) => [...prev, next]);
     setIngredientsList((prev) => {return {...prev, [next]: ''}});
@@ -147,78 +152,98 @@ const NewRecipeForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>{title ? title : 'New Recipe'}</h3>
-      <ul>
+      <h2 className="text-gray-900 text-xl font-medium py-2 text-center">{title ? title : 'New Recipe'}</h2>
+      <ul className='mx-10'>
         <li>
-          <label htmlFor="title">Title: </label>
+          <label htmlFor="title" className='block text-sm '>Title </label>
           <input
+            className='mb-2 shadow-sm px-2 py-1 w-64 text-gray-600'
             id="title"
             value={title}
             onChange={(e) => setTitle(e.currentTarget.value)}
             autoFocus
           />
         </li>
+        <ul className='flex'>
+          <li>
+            <label htmlFor="portions" className='block text-sm'>Servings</label>
+            <input
+              className='mb-2 shadow-sm w-6 text-center text-gray-600'
+              type="number"
+              id="portions"
+              value={servings}
+              onChange={(e) => setServings(e.currentTarget.value)}
+            />
+          </li>
+          <li className='ml-12'>
+            <label htmlFor="prep" className='block text-sm'>Minutes</label>
+            <input
+              className='mb-2 shadow-sm px-2 w-10 text-right text-gray-600'
+              type="number"
+              id="prep"
+              value={readyInMinutes}
+              onChange={(e) => setReadyInMinutes(e.currentTarget.value)}
+            />
+          </li>
+        </ul>
         <li>
-          <label htmlFor="portions">Portions: </label>
-          <input
-            type="number"
-            id="portions"
-            value={servings}
-            onChange={(e) => setServings(e.currentTarget.value)}
-          />
-        </li>
-        <li>
-          <label htmlFor="prep">Prep & cooking time: </label>
-          <input
-            type="number"
-            id="prep"
-            value={readyInMinutes}
-            onChange={(e) => setReadyInMinutes(e.currentTarget.value)}
-          />
-        </li>
-        <li>
-          <label htmlFor="instructions">Instructions: </label>
-          <input
+          <label htmlFor="instructions" className='block text-sm'>Instructions </label>
+          <textarea
+            className='mb-2 shadow-sm px-2 w-64 text-gray-600 text-sm h-36'
             id="instructions"
             value={instructions}
             onChange={(e) => setInstructions(e.currentTarget.value)}
           />
         </li>
-        
-        <li><h4>Ingredient / amount / measure</h4></li>
+
         <li>
           {ingredientNum.map((index) => {
+            let last = index === ingredientNum.at(-1);
             return (
-              <div key={index}>
-                <input 
-                  list="ingredientOptions" 
-                  id={`ingredient${index}`} 
-                  value={ingredientsList[index]} 
-                  onChange={(e) => handleIngredientChange(e, index)}
-                />
-                <IngredientOptions />
-                <input 
-                  id={`amount${index}`} 
-                  value={amountsList[index]} 
-                  onChange={(e) => handleAmountChange(e, index)}
-                />
-                <input 
-                  list="unitOptions" 
-                  id={`unit${index}`}  
-                  value={unitsList[index]} 
-                  onChange={(e) => handleUnitChange(e, index)}
-                />
-                <UnitOptions />
-                <button type="button" onClick={() => removeIngredient(index)}>-</button>
+              <div key={index} className="flex mb-2">
+                <div>
+                  <input
+                    className="w-36 mr-4 text-gray-600 px-2 shadow-sm" 
+                    list="ingredientOptions" 
+                    id={`ingredient${index}`} 
+                    value={ingredientsList[index]} 
+                    onChange={(e) => handleIngredientChange(e, index)}
+                  />
+                  {last && <label htmlFor={`ingredient${index}`} className='block text-xs'>Ingredient</label>}
+                </div>
+                <div>
+                  <input 
+                    className='mr-2 w-10 px-2 text-right text-gray-600 shadow-sm'
+                    id={`amount${index}`} 
+                    value={amountsList[index]} 
+                    onChange={(e) => handleAmountChange(e, index)}
+                  />
+                </div>
+                <div>
+                  <input 
+                    className='w-14 px-2 text-gray-600 shadow-sm'
+                    list="unitOptions" 
+                    id={`unit${index}`}  
+                    value={unitsList[index]} 
+                    onChange={(e) => handleUnitChange(e, index)}
+                  />
+                  {last && <label htmlFor={`unit${index}`} className='block text-xs'>Measure</label>}
+                </div>
+                <button className='ml-2 bg-gray-700 shadow-sm px-1 rounded text-white text-xl font-extrabold h-6 flex' type="button" onClick={() => removeIngredient(index)}>
+                  <span class="material-symbols-outlined">
+                    delete
+                  </span>
+                </button>
               </div>  
             )
           })}
-          
-          <label htmlFor="addRecipe">Add Ingredient: </label>
-          <button type="button" id="addIngredient" onClick={addIngredient}>+</button>
+          <IngredientOptions ingredients={ingredientOptionsList}/>
+          <UnitOptions />
+         
         </li>
-        <li>
-          <input type="submit" value="Save Recipe"/>
+        <li className='flex justify-center'>
+          <button type="button" id="addIngredient" className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 mx-auto text-lg font-light mt-8 mb-2" onClick={addIngredient}>Add Ingredient</button>
+          <input type="submit" value="Save Recipe" className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 mx-auto text-lg font-light mt-8 mb-2"/>
         </li>
         
       </ul>
