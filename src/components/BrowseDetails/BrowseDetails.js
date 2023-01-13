@@ -36,7 +36,7 @@ const BrowseDetails = ({ browseId, viewDetails }) => {
         <div className="flex flex-col items-center">
             <div className="flex items-center content-center">
                 <h3 className="text-gray-900 text-xl font-medium my-6 text-center">{title}</h3>
-                <button onClick={handleSave} className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 ml-4 text-lg font-light" chadow-sm>Save Recipe</button>
+                <button onClick={handleSave} className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 ml-4 text-lg font-light">Save Recipe</button>
             </div>
             
             <img src={image} alt={title} width="240" className="rounded-xl"/>
