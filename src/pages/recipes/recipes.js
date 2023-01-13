@@ -41,7 +41,7 @@ const Recipes = () => {
 
   
   return (
-    <main className=' bg-gray-200 h-full'>
+    <main className=' bg-gray-200 h-min-full'>
       <div className=" bg-gray-700">
         <h2 className="text-white text-3xl font-normal text-center py-6">Your Digital Recipe Book</h2>
       </div>

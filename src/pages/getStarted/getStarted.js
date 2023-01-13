@@ -5,9 +5,9 @@ import ROUTES from "../../app/routes";
 
 const GetStarted = () => {
   return (
-    <main>
+    <main className="min-h-full bg-gray-200">
       <Banner />
-      <div className="bg-gray-200 text-center">
+      <div className="text-center">
         <h2 className="text-gray-900 text-xl font-medium pt-10">
           Why Use It?
         </h2>
