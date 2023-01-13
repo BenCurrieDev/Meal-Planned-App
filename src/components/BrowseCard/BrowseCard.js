@@ -21,9 +21,9 @@ const BrowseCard = (props) => {
   }
      
   return (
-    <button onClick={handleClick}>
-        <h4>{title}</h4>
-        <img src={image} alt={title}  />
+    <button onClick={handleClick} className="my-2 shadow bg-white rounded-lg flex flex-col items-center justify-center justify-items-center">
+        <h4 className="text-gray-500 text-lg self-start ml-4 mt-1">{title}</h4>
+        <img src={image} alt={title}  className="h-24 mb-2 mt-1 self-center rounded"/>
     </button>
   )
 }

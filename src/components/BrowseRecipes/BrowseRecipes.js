@@ -27,7 +27,7 @@ const BrowseRecipes = ({ browseDetails }) => {
                   disableSearch={disableSearch} setDisableSearch={setDisableSearch} 
                 />
               </div>
-              <div className="flex flex-col mx-auto w-72 my-4">
+              <div className="flex flex-col mx-auto w-60 my-4">
                 {cache.results.map((obj, index) => <BrowseCard key={index} searchResult={obj} browseDetails={browseDetails}/>)}
               </div>
             </>
