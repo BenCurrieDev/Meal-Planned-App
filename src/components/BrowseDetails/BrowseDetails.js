@@ -33,28 +33,33 @@ const BrowseDetails = ({ browseId, viewDetails }) => {
     }
 
     return (
-        <>
-            <h3>{title}</h3>
-            <button onClick={handleSave}><h4>Save Recipe</h4></button>
-            <img src={image} alt={title} width="300" />
-            <p>Serves: {servings}</p><p>Prep & cooking time: {readyInMinutes}</p>
-            <h4>Ingredients</h4>
+        <div className="flex flex-col items-center">
+            <div className="flex items-center content-center">
+                <h3 className="text-gray-900 text-xl font-medium my-6 text-center">{title}</h3>
+                <button onClick={handleSave} className="rounded-2xl bg-gray-700 text-gray-200 py-1 px-4 ml-4 text-lg font-light" chadow-sm>Save Recipe</button>
+            </div>
+            
+            <img src={image} alt={title} width="240" className="rounded-xl"/>
+            <div className="flex text-sm my-2">
+                <p>Serves: {servings}</p>
+                <p className="ml-4">Prep & cooking time: {readyInMinutes}</p>
+            </div>
+            <h4 className="text-lg">Ingredients</h4>
             <table>
-                <tbody>
+                <tbody className="text-xs text-gray-600">
                     {ingredients.map(({ name, amount, unit }, index) => {
                         return (
                             <tr key={index}>
-                                <td>{name}</td>
-                                <td>{amount}</td>
-                                <td>{unit}</td>
+                                <td className="text-right px-2">{`${amount} ${unit}`}</td>
+                                <td >{name}</td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-            <h4>Instructions</h4>
-            <p>{simpleInstuctions}</p>
-        </>
+            <h4 className="text-lg mt-2">Instructions</h4>
+            <p className="mx-4 text-sm text-gray-600 text-center mt-2 mb-4">{simpleInstuctions}</p>
+        </div>
     )
 }
 
