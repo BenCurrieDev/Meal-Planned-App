@@ -20,6 +20,7 @@ const NewRecipeForm = (props) => {
   const [amountsList, setAmountsList] = useState({})
   const [unitsList, setUnitsList] = useState({})
   const [ingredientNum, setIngredientNum] = useState([]);
+  const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
   
 

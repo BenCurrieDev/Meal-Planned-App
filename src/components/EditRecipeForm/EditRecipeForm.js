@@ -34,6 +34,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
   const [amountsList, setAmountsList] = useState(amountsListStart)
   const [unitsList, setUnitsList] = useState(unitsListStart)
   const [ingredientNum, setIngredientNum] = useState(ingredientNumStart);
+  const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
   
 
