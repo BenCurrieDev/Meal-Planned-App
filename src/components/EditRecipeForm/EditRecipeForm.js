@@ -70,6 +70,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
       title: title,
       servings: servings,
       readyInMinutes: readyInMinutes,
+      tags: tags,
       instructions: instructions,
       extendedIngredients: ingredientNum.map(num => {
         const name = ingredientsList[num].toLowerCase();
