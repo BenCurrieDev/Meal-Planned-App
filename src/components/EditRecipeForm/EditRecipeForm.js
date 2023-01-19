@@ -7,7 +7,7 @@ import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from '../NewRecipeForm/UnitOptions';
 import { useSelector } from 'react-redux';
 import { selectAllIngredients } from '../../data/IngredientsSlice';
-
+import TagsInput from '../TagsInput/TagsInput';
 
 const EditRecipeForm = ({ recipe, viewDetails }) => {
   const ingredientOptions = useSelector(selectAllIngredients);
@@ -34,6 +34,8 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
   const [amountsList, setAmountsList] = useState(amountsListStart)
   const [unitsList, setUnitsList] = useState(unitsListStart)
   const [ingredientNum, setIngredientNum] = useState(ingredientNumStart);
+  const [tags, setTags] = useState(recipe.tags ? recipe.tags : []);
+  const [tagsInput, setTagsInput] = useState('');
   const dispatch = useDispatch();
   
 
@@ -69,6 +71,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
       title: title,
       servings: servings,
       readyInMinutes: readyInMinutes,
+      tags: tags,
       instructions: instructions,
       extendedIngredients: ingredientNum.map(num => {
         const name = ingredientsList[num].toLowerCase();
@@ -187,6 +190,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
             />
           </li>
         </ul>
+        <TagsInput setTags={setTags} setTagsInput={setTagsInput} tagsInput={tagsInput} tags={tags} />
         <li>
           <label htmlFor="instructions" className='block text-sm'>Instructions </label>
           <textarea
@@ -231,7 +235,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
                   {last && <label htmlFor={`unit${index}`} className='block text-xs'>Measure</label>}
                 </div>
                 <button className='ml-2 bg-gray-700 shadow-sm px-1 rounded text-white text-xl font-extrabold h-6 flex' type="button" onClick={() => removeIngredient(index)}>
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                     delete
                   </span>
                 </button>

@@ -7,6 +7,7 @@ import ingredientsToIds from '../../data/ingredientsData';
 import UnitOptions from './UnitOptions';
 import { useSelector } from 'react-redux';
 import { selectAllIngredients } from '../../data/IngredientsSlice';
+import TagsInput from '../TagsInput/TagsInput';
 
 
 const NewRecipeForm = (props) => {
@@ -20,6 +21,8 @@ const NewRecipeForm = (props) => {
   const [amountsList, setAmountsList] = useState({})
   const [unitsList, setUnitsList] = useState({})
   const [ingredientNum, setIngredientNum] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [tagsInput, setTagsInput] = useState('');
   const dispatch = useDispatch();
   
 
@@ -58,6 +61,7 @@ const NewRecipeForm = (props) => {
       title: title,
       servings: servings,
       readyInMinutes: readyInMinutes,
+      tags: tags,
       instructions: instructions,
       extendedIngredients: ingredientNum.map(num => {
         const name = ingredientsList[num].toLowerCase();
@@ -186,6 +190,9 @@ const NewRecipeForm = (props) => {
             />
           </li>
         </ul>
+        <li>
+          <TagsInput setTags={setTags} setTagsInput={setTagsInput} tagsInput={tagsInput} tags={tags} />
+        </li>
         <li>
           <label htmlFor="instructions" className='block text-sm'>Instructions </label>
           <textarea

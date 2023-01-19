@@ -4,6 +4,7 @@ import { removeRecipe } from "../../features/recipes/recipesSlice";
 
 const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
     const { id, title, servings, readyInMinutes, instructions, extendedIngredients } = recipe;
+    const tags = recipe.tags ? recipe.tags : [];
     const dispatch = useDispatch();
 
     const handleDelete = () => {
@@ -24,6 +25,14 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
                 <p>Serves: {servings}</p>
                 <p className="ml-4">Prep & cooking time: {readyInMinutes}</p>
             </div>
+            <div className="flex flex-wrap w-72 mb-2 justify-center">
+                {tags.map((tag, index) => {
+                    return (
+                        <p key={index} className="bg-gray-400 py-1 px-2 rounded shadow-sm text-xs text-gray-900 mx-1 mb-1">{tag}</p>
+                    )
+                }
+                )}
+            </div>
             <h3 className="text-lg">Ingredients:</h3>
             <table>
                 <tbody className="text-xs text-gray-600">
@@ -37,7 +46,7 @@ const RecipeDetailedView = ({ recipe, backToBook, editRecipe }) => {
                     })}
                 </tbody>
             </table>
-            <h3 className="text-lg mt-2">Instructions:</h3>
+            <h3 className="text-lg mt-4">Instructions:</h3>
             <p className="mx-4 text-sm text-gray-600 text-center mt-2 mb-4">{instructions}</p>
         </div>
         
