@@ -21,15 +21,15 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
     
 
     return (
-        <div className="border rounded shadow-sm p-1 flex items-center flex-wrap bg-white">
+        <div className="border rounded shadow-sm p-1 flex items-center flex-wrap bg-white w-64">
             { tags.map((tag, index) => (
-                <div className="bg-gray-300 inline-block px-2 py-1 rounded mr-1" key={index}>
+                <div className="bg-gray-300 inline-block px-2 py-1 rounded mr-1 mb-1" key={index}>
                     <span className="text-sm text-gray-700">{tag}</span>
                     <span onClick={() => removeTag(index)} className="cursor-pointer ml-1 inline-flex content-center items-center">&times;</span>
                 </div>
             ))
             }
-            <input onChange={(e) => setTagsInput(e.target.value)} onKeyDown={handleKeyDown} type="text"  value={tagsInput} placeholder="Press Enter to add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
+            <input onChange={(e) => setTagsInput(e.target.value)} onKeyDown={handleKeyDown} type="text"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
             <TagOptions />
         </div>
     )
