@@ -9,6 +9,7 @@ import ROUTES from './routes';
 import NavBarTop from '../components/NavBarTop/NavBarTop';
 import GetStarted from '../pages/getStarted/getStarted';
 import Recipes from '../pages/recipes/recipes';
+import Planner from '../pages/planner/planner'
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 				<Routes>
 					<Route path={ROUTES.homeRoute()} element={<GetStarted />} />
 					<Route path={ROUTES.recipesRoute()} element={<Recipes />} />
+					<Route path={ROUTES.plannerRoute()} element={<Planner />} />
 				</Routes>
 				</div>
 			</div>
