@@ -15,7 +15,7 @@ const Recipes = () => {
   const [ activeRecipe, setActiveRecipe ] = useState('');
   const [ browseId, setBrowseId ] = useState('');
   // SHOULD BE ABLE TO USE USEFFECT TO SET RENDERED VIEW, 
-  // THIS WILL REDUCE AMOUNT OF TIMES CONDITIONALS ARE EVALAUTED
+  // THIS WILL REDUCE AMOUNT OF TIMES CONDITIONALS ARE EVALUATED
   
 
   
@@ -43,7 +43,7 @@ const Recipes = () => {
   return (
     <main className='min-h-full bg-gray-200'>
       <div className=" bg-gray-700">
-        <h2 className="text-white text-3xl font-normal text-center py-6">Your Digital Recipe Book</h2>
+        <h2 className="text-white text-3xl font-normal text-center py-6">Recipe Book</h2>
       </div>
       {view === 'displayRecipes' && <div><RecipeDisplayArea viewDetails={viewDetails}/></div>}
       {view === 'addRecipe' && <div><NewRecipeForm backToBook={backToBook}/></div>}
