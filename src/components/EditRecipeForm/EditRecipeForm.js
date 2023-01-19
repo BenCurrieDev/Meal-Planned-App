@@ -235,7 +235,7 @@ const EditRecipeForm = ({ recipe, viewDetails }) => {
                   {last && <label htmlFor={`unit${index}`} className='block text-xs'>Measure</label>}
                 </div>
                 <button className='ml-2 bg-gray-700 shadow-sm px-1 rounded text-white text-xl font-extrabold h-6 flex' type="button" onClick={() => removeIngredient(index)}>
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                     delete
                   </span>
                 </button>
