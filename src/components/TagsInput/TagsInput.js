@@ -3,8 +3,9 @@ import TagOptions from "./TagOptions";
 
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
-    function handleSubmit(e) {
-        console.log('Submit handled')
+    function handleTextInput(e) {
+        console.log('Text input handled');
+        console.log(e.originalEvent.data);
         e.preventDefault();
     
         if (!tagsInput) return;
@@ -33,10 +34,8 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-            <form onSubmit={handleSubmit}>
-                <input onChange={handleChange} type="text" value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
-                <input type="submit" hidden="true" />
-            </form>
+                <input onChange={handleChange} onTextInput={handleTextInput} type="text" value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
+
            
             <TagOptions />
         </div>
