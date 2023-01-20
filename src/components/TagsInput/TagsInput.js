@@ -35,7 +35,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-            <input onChange={handleChange} onKeyDown={handleKeyUp} type="text"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none"/>
+            <input onChange={handleChange} onKeyDown={handleKeyUp} type="submit"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none"/>
             <TagOptions />
         </div>
     )
