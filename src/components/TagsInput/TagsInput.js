@@ -4,8 +4,9 @@ import TagOptions from "./TagOptions";
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
     function handleKeyDown(e) {
-       
-        if (e.key === 'Enter' || e.keyCode === 13) {
+        console.log(e.keyCode);
+        console.log(e.keyCode === 13 ? 'equal' : 'not equal');
+        if (e.key === 'Enter' || e.keyCode == 13) {
             e.preventDefault();
         
             if (!tagsInput) return;
