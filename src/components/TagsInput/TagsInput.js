@@ -18,6 +18,13 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
     function removeTag(index) {
         setTags(tags.filter((tag, i) => i !== index));
     }
+
+    function handleChange(e) {
+        console.log(e);
+        console.log(e.target);
+        console.log(e.target.value);
+        setTagsInput(e.target.value);
+    }
         
     
 
@@ -30,7 +37,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-            <input onChange={(e) => setTagsInput(e.target.value)} onKeyDown={handleKeyDown} type="text"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" enterkeyhint="enter"/>
+            <input onChange={handleChange} onKeyDown={handleKeyDown} type="text"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" enterkeyhint="enter"/>
             <TagOptions />
         </div>
     )
