@@ -3,18 +3,16 @@ import TagOptions from "./TagOptions";
 
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
-    function handleKeyUp(e) {
-        console.log(e.key, e.keyCode)
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            e.preventDefault();
-        
-            if (!tagsInput) return;
-            setTags([...tags, tagsInput]);
-            setTagsInput('');
-        };
-
+    function handleSubmit(e) {
+        console.log('Submit handled')
+        e.preventDefault();
     
-    }
+        if (!tagsInput) return;
+        setTags([...tags, tagsInput]);
+        setTagsInput('');
+    };
+
+
 
     function removeTag(index) {
         setTags(tags.filter((tag, i) => i !== index));
@@ -35,7 +33,11 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-            <input onChange={handleChange} onKeyDown={handleKeyUp} type="submit"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none"/>
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleChange} type="text" value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
+                <input type="submit" hidden="true" />
+            </form>
+           
             <TagOptions />
         </div>
     )
