@@ -3,9 +3,9 @@ import TagOptions from "./TagOptions";
 
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
-    function handleInput(e) {
+    function handleKeyUp(e) {
         console.log('Input handled')
-        console.log(e.keyCode);
+        console.log(e.key);
         console.log(e.keyCode == 13);
         if (e.key === 'Enter' || e.keyCode === 13) {
             e.preventDefault();
@@ -37,7 +37,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-            <input onChange={handleChange} onBeforeInput={handleInput} type="text"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" enterkeyhint="enter"/>
+            <input onChange={handleChange} oKeyUp={handleKeyUp} type="tel"  value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" enterkeyhint="enter"/>
             <TagOptions />
         </div>
     )
