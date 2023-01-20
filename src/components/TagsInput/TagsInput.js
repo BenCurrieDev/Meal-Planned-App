@@ -4,7 +4,7 @@ import TagOptions from "./TagOptions";
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
     function handleKeyUp(e) {
-        console.log('Input handled')
+        console.log(e)
         if (e.key === 'Enter' || e.keyCode === 13) {
             e.preventDefault();
         
@@ -21,7 +21,6 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
     }
 
     function handleChange(e) {
-        console.log('Change registered')
         setTagsInput(e.target.value);
     }
         
