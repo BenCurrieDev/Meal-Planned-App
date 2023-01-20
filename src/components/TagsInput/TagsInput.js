@@ -4,17 +4,16 @@ import TagOptions from "./TagOptions";
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
     function handleKeyDown(e) {
-        console.log("handleKeyDown event:", e);
-        console.log("handleKeyDown key:", e.key);
-        console.log("handleKeyDown keyCode:", e.keyCode);
        
-        if (e.key !== 'Enter') return;
-
-        e.preventDefault();
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
         
-        if (!tagsInput) return;
-        setTags([...tags, tagsInput]);
-        setTagsInput('');
+            if (!tagsInput) return;
+            setTags([...tags, tagsInput]);
+            setTagsInput('');
+        };
+
+    
     }
 
     function removeTag(index) {
