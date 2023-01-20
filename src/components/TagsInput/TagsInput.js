@@ -4,7 +4,7 @@ import TagOptions from "./TagOptions";
 function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
     function handleKeyDown(e) {
-        console.log("handleKeyDown: ", e.key);
+        console.log("handleKeyDown: ", e.key, e.code);
        
         if (e.key !== 'Enter') return;
 
