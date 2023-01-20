@@ -5,7 +5,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
 
     function handleTextInput(e) {
         console.log('Text input handled');
-        console.log(e.originalEvent.data);
+        console.log(e.target.value.charAt(e.target.selectionStart - 1).charCodeAt());
         e.preventDefault();
     
         if (!tagsInput) return;
@@ -34,7 +34,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
                 </div>
             ))
             }
-                <input onChange={handleChange} onTextInput={handleTextInput} type="text" value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
+                <input onChange={handleChange} onKeyDown={handleTextInput} type="text" value={tagsInput} placeholder="Add tag..." list="tagOptions" className="flex-grow px-1 text-xs outline-none border-none shadow-none" />
 
            
             <TagOptions />
