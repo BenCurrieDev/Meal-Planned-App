@@ -22,6 +22,7 @@ function TagsInput({setTags, setTagsInput, tagsInput, tags}) {
     }
 
     function handleChange(e) {
+        console.log(e.key);
         setTagsInput(e.target.value);
     }
         
